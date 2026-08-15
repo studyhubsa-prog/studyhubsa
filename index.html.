@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>StudyHubSA | Study Smarter</title>
 
   <style>
@@ -40,18 +41,18 @@
 
     .hero {
       text-align: center;
-      padding: 80px 20px;
+      padding: 75px 20px;
       background: white;
     }
 
     .hero h1 {
-      font-size: 45px;
+      font-size: 42px;
       color: #0b3d91;
       margin-bottom: 15px;
     }
 
     .hero p {
-      font-size: 20px;
+      font-size: 19px;
       margin-bottom: 30px;
     }
 
@@ -65,40 +66,210 @@
       font-weight: bold;
     }
 
-    .subjects {
-      padding: 50px 8%;
+    .grades {
+      padding: 55px 8%;
       text-align: center;
     }
 
-    .subjects h2 {
-      margin-bottom: 30px;
+    .grades h2 {
+      color: #0b3d91;
       font-size: 32px;
+      margin-bottom: 10px;
     }
 
-    .cards {
+    .grades p {
+      margin-bottom: 30px;
+    }
+
+    .grade-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 18px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .grade {
+      background: white;
+      padding: 25px 10px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: #0b3d91;
+      font-size: 20px;
+      font-weight: bold;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      transition: 0.2s;
+    }
+
+    .grade:hover {
+      transform: translateY(-4px);
+    }
+
+    .features {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>StudyHubSA | Study Smarter</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f7fb;
+      color: #1f2937;
+    }
+
+    header {
+      background: #0b3d91;
+      color: white;
+      padding: 20px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 18px;
+      font-weight: bold;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 80px 20px;
+      background: white;
+    }
+
+    .hero h1 {
+      font-size: 44px;
+      color: #0b3d91;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+
+    .button {
+      display: inline-block;
+      background: #0b3d91;
+      color: white;
+      padding: 15px 30px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .grades {
+      padding: 60px 8%;
+      text-align: center;
+    }
+
+    .grades h2 {
+      color: #0b3d91;
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .grades-intro {
+      margin-bottom: 30px;
+    }
+
+    .grade-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 18px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .grade {
+      background: white;
+      color: #0b3d91;
+      padding: 25px 10px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-size: 19px;
+      font-weight: bold;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      transition: 0.2s;
+    }
+
+    .grade:hover {
+      transform: translateY(-4px);
+    }
+
+    .features {
+      background: white;
+      padding: 60px 8%;
+      text-align: center;
+    }
+
+    .features h2 {
+      color: #0b3d91;
+      font-size: 30px;
+      margin-bottom: 30px;
+    }
+
+    .feature-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 20px;
     }
 
-    .card {
-      background: white;
+    .feature {
+      background: #f5f7fb;
       padding: 30px 20px;
       border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
     }
 
-    .card h3 {
+    .feature h3 {
       color: #0b3d91;
       margin-bottom: 10px;
     }
 
     footer {
-      text-align: center;
       background: #0b3d91;
       color: white;
+      text-align: center;
       padding: 25px;
-      margin-top: 30px;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        justify-content: center;
+        text-align: center;
+      }
+
+      nav a {
+        margin: 5px 8px;
+        display: inline-block;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .hero p {
+        font-size: 17px;
+      }
     }
   </style>
 </head>
@@ -106,57 +277,103 @@
 <body>
 
   <header>
+
     <div class="logo">📚 StudyHubSA</div>
 
     <nav>
       <a href="#">Home</a>
-      <a href="#subjects">Subjects</a>
-      <a href="#">About</a>
+      <a href="#grades">Grades</a>
+      <a href="#features">Features</a>
     </nav>
+
   </header>
 
+
   <section class="hero">
+
     <h1>Study Smarter. Ace Your Exams. 🇿🇦</h1>
 
     <p>
       South Africa's smart study platform for Grades 4–12.
     </p>
 
-    <a href="#subjects" class="button">Start Studying</a>
+    <a href="#grades" class="button">
+      Choose Your Grade
+    </a>
+
   </section>
 
-  <section class="subjects" id="subjects">
 
-    <h2>Explore Your Subjects</h2>
+  <section class="grades" id="grades">
 
-    <div class="cards">
+    <h2>🎓 Choose Your Grade</h2>
 
-      <div class="card">
-        <h3>📐 Mathematics</h3>
-        <p>Study notes, practice questions and exam preparation.</p>
+    <p class="grades-intro">
+      Select your grade and start your learning journey.
+    </p>
+
+    <div class="grade-grid">
+
+      <a class="grade" href="#">Grade 4</a>
+      <a class="grade" href="#">Grade 5</a>
+      <a class="grade" href="#">Grade 6</a>
+      <a class="grade" href="#">Grade 7</a>
+      <a class="grade" href="#">Grade 8</a>
+      <a class="grade" href="#">Grade 9</a>
+      <a class="grade" href="#">Grade 10</a>
+      <a class="grade" href="#">Grade 11</a>
+      <a class="grade" href="#">Grade 12</a>
+
+    </div>
+
+  </section>
+
+
+  <section class="features" id="features">
+
+    <h2>🚀 StudyHubSA Features</h2>
+
+    <div class="feature-grid">
+
+      <div class="feature">
+        <h3>📚 Study Notes</h3>
+        <p>
+          Easy-to-understand study resources for learners.
+        </p>
       </div>
 
-      <div class="card">
-        <h3>🔬 Science</h3>
-        <p>Understand difficult concepts and prepare for tests.</p>
+      <div class="feature">
+        <h3>📝 Quizzes</h3>
+        <p>
+          Test your knowledge with interactive quizzes.
+        </p>
       </div>
 
-      <div class="card">
-        <h3>📖 English</h3>
-        <p>Improve your language skills and exam confidence.</p>
+      <div class="feature">
+        <h3>🎯 Exam Preparation</h3>
+        <p>
+          Prepare for tests and exams with confidence.
+        </p>
       </div>
 
-      <div class="card">
-        <h3>🌍 Geography</h3>
-        <p>Learn smarter with useful study resources.</p>
+      <div class="feature">
+        <h3>🤖 AI Study Assistant</h3>
+        <p>
+          Get smart help with difficult topics and questions.
+        </p>
       </div>
 
     </div>
 
   </section>
 
+
   <footer>
-    <p>© 2026 StudyHubSA. Built for South African learners 🇿🇦</p>
+
+    <p>
+      © 2026 StudyHubSA. Built for South African learners 🇿🇦
+    </p>
+
   </footer>
 
 </body>
