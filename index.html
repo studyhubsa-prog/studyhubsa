@@ -8,10 +8,6 @@
 
 <style>
 
-/* =========================
-   ORIGINAL STUDYHUBSA STYLE
-========================= */
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -22,20 +18,16 @@ body {
     font-family: Arial, sans-serif;
 
     /* ORIGINAL BACKGROUND */
-    background:
-        linear-gradient(
-            135deg,
-            #071a33,
-            #0d47a1,
-            #00a896
-        );
+    background: linear-gradient(
+        135deg,
+        #071a33,
+        #0d47a1,
+        #00a896
+    );
 
-    color: white;
+    color: #fff;
     min-height: 100vh;
 }
-
-
-/* HEADER */
 
 header {
     background: rgba(0,0,0,0.45);
@@ -57,9 +49,6 @@ header p {
     margin-top: 8px;
 }
 
-
-/* NAVIGATION */
-
 nav {
     display: flex;
     justify-content: center;
@@ -74,7 +63,7 @@ nav button {
     padding: 12px 18px;
     border-radius: 25px;
     cursor: pointer;
-    background: white;
+    background: #fff;
     color: #073b74;
     font-weight: bold;
 }
@@ -83,17 +72,11 @@ nav button:hover {
     background: #00e5ff;
 }
 
-
-/* CONTAINER */
-
 .container {
     width: 94%;
     max-width: 1200px;
     margin: 30px auto;
 }
-
-
-/* SECTIONS */
 
 .section {
     display: none;
@@ -102,9 +85,6 @@ nav button:hover {
 .section.active {
     display: block;
 }
-
-
-/* CARDS */
 
 .card {
     background: rgba(255,255,255,0.12);
@@ -116,17 +96,11 @@ nav button:hover {
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
-
-/* HEADINGS */
-
 h1,
 h2,
 h3 {
     margin-bottom: 15px;
 }
-
-
-/* BUTTONS */
 
 .primary {
     background: #00e5ff;
@@ -143,22 +117,21 @@ h3 {
     transform: scale(1.03);
 }
 
-
-/* GRID */
+select,
+input[type="text"] {
+    width: 100%;
+    padding: 13px;
+    margin: 8px 0 15px;
+    border-radius: 10px;
+    border: none;
+}
 
 .resource-grid {
     display: grid;
     grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(220px, 1fr)
-        );
-
+        repeat(auto-fit, minmax(220px, 1fr));
     gap: 15px;
 }
-
-
-/* RESOURCE CARDS */
 
 .resource-card {
     background: rgba(255,255,255,0.12);
@@ -166,59 +139,56 @@ h3 {
     border-radius: 15px;
 }
 
+.paper-card {
+    background: rgba(0,0,0,0.25);
+    padding: 18px;
+    margin: 12px 0;
+    border-radius: 15px;
 
-/* PRICE */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
 
 .price {
-    font-size: 24px;
-    font-weight: bold;
     color: #00e5ff;
+    font-size: 21px;
+    font-weight: bold;
 }
-
-
-/* STATUS */
 
 .status-box {
+    background: rgba(0,0,0,0.25);
     padding: 18px;
     border-radius: 15px;
-    background: rgba(0,0,0,0.25);
-    margin-top: 15px;
 }
-
-
-/* PROGRESS */
-
-progress {
-    width: 100%;
-    height: 20px;
-}
-
-
-/* PREMIUM BADGE */
 
 .premium-badge {
     display: inline-block;
-    padding: 8px 15px;
     background: #00e5ff;
     color: #00334d;
+    padding: 7px 12px;
     border-radius: 20px;
     font-weight: bold;
 }
-
-
-/* FREE BADGE */
 
 .free-badge {
     display: inline-block;
-    padding: 8px 15px;
     background: #27ae60;
     color: white;
+    padding: 7px 12px;
     border-radius: 20px;
     font-weight: bold;
 }
 
-
-/* FOOTER */
+.payment-card {
+    background: rgba(255,255,255,0.12);
+    padding: 22px;
+    border-radius: 15px;
+    margin: 12px 0;
+    border: 1px solid rgba(255,255,255,0.15);
+}
 
 footer {
     text-align: center;
@@ -227,8 +197,10 @@ footer {
     background: rgba(0,0,0,0.35);
 }
 
-
-/* MOBILE */
+.small {
+    font-size: 13px;
+    opacity: 0.8;
+}
 
 @media(max-width:600px) {
 
@@ -236,6 +208,9 @@ footer {
         font-size: 27px;
     }
 
+    .paper-card {
+        display: block;
+    }
 }
 
 </style>
@@ -245,9 +220,9 @@ footer {
 <body>
 
 
-<!-- =========================
+<!-- ==========================================
      HEADER
-========================= -->
+========================================== -->
 
 <header>
 
@@ -262,9 +237,9 @@ footer {
 </header>
 
 
-<!-- =========================
+<!-- ==========================================
      NAVIGATION
-========================= -->
+========================================== -->
 
 <nav>
 
@@ -284,8 +259,8 @@ footer {
         ⭐ Premium
     </button>
 
-    <button onclick="showSection('papers')">
-        📄 Past Papers
+    <button onclick="showSection('payment')">
+        💳 Payment
     </button>
 
 </nav>
@@ -294,14 +269,13 @@ footer {
 <div class="container">
 
 
-<!-- =========================
+<!-- ==========================================
      HOME
-========================= -->
+========================================== -->
 
 <section
     id="home"
-    class="section active"
->
+    class="section active">
 
     <div class="card">
 
@@ -328,19 +302,27 @@ footer {
             class="primary"
             onclick="showSection('research')">
 
-            🔬 Start Research
+            🔬 Research
+
+        </button>
+
+        <button
+            class="primary"
+            onclick="showSection('premium')">
+
+            ⭐ Premium Resources
 
         </button>
 
     </div>
 
 
-    <!-- PREMIUM STATUS -->
+    <!-- 7 DAY STATUS -->
 
     <div class="card">
 
         <h2>
-            ⭐ Your StudyHubSA Premium Status
+            🎁 Your Premium Reward
         </h2>
 
         <div
@@ -356,7 +338,9 @@ footer {
         <progress
             id="studyProgress"
             value="0"
-            max="7">
+            max="7"
+            style="width:100%;">
+
         </progress>
 
     </div>
@@ -375,12 +359,12 @@ footer {
             <div class="resource-card">
 
                 <h3>
-                    🔬 Research
+                    🎯 Smart Quizzes
                 </h3>
 
                 <p>
-                    Research topics and find
-                    information about subjects.
+                    Grade-specific quizzes
+                    with automatic scoring.
                 </p>
 
                 <br>
@@ -395,12 +379,12 @@ footer {
             <div class="resource-card">
 
                 <h3>
-                    🎯 Smart Quizzes
+                    🔬 Research
                 </h3>
 
                 <p>
-                    Practise with grade and
-                    subject-based quizzes.
+                    Research topics you want
+                    to learn more about.
                 </p>
 
                 <br>
@@ -419,8 +403,8 @@ footer {
                 </h3>
 
                 <p>
-                    Access the basic
-                    StudyHubSA learning system.
+                    Use the basic StudyHubSA
+                    learning features.
                 </p>
 
                 <br>
@@ -435,106 +419,12 @@ footer {
 
     </div>
 
-
-    <!-- PREMIUM FEATURES -->
-
-    <div class="card">
-
-        <h2>
-            ⭐ Premium Features
-        </h2>
-
-        <div class="resource-grid">
-
-            <div class="resource-card">
-
-                <h3>
-                    📄 Past Papers
-                </h3>
-
-                <p>
-                    Previous years' examination
-                    papers.
-                </p>
-
-                <br>
-
-                <span class="premium-badge">
-                    R10 EACH
-                </span>
-
-            </div>
-
-
-            <div class="resource-card">
-
-                <h3>
-                    📝 Memos
-                </h3>
-
-                <p>
-                    Answer memorandums for
-                    past papers.
-                </p>
-
-                <br>
-
-                <span class="premium-badge">
-                    R10 EACH
-                </span>
-
-            </div>
-
-
-            <div class="resource-card">
-
-                <h3>
-                    📚 Premium Resources
-                </h3>
-
-                <p>
-                    Additional premium study
-                    resources.
-                </p>
-
-                <br>
-
-                <span class="premium-badge">
-                    PREMIUM
-                </span>
-
-            </div>
-
-
-            <div class="resource-card">
-
-                <h3>
-                    ⭐ Exam Preparation
-                </h3>
-
-                <p>
-                    Advanced examination
-                    preparation resources.
-                </p>
-
-                <br>
-
-                <span class="premium-badge">
-                    PREMIUM
-                </span>
-
-            </div>
-
-        </div>
-
-    </div>
-
 </section>
 
 
-<!-- =========================
+<!-- ==========================================
      SMART QUIZ
-========================= -->
+========================================== -->
 
 <section
     id="quiz"
@@ -546,18 +436,14 @@ footer {
             🎯 Smart Quiz
         </h2>
 
-        <p>
-            Choose your grade and subject
-            to start practising.
-        </p>
+        <label>
+            Select Grade
+        </label>
 
-        <br>
-
-        <select
-            id="gradeSelect">
+        <select id="gradeSelect">
 
             <option value="">
-                Select Grade
+                Choose Grade
             </option>
 
             <option value="8">
@@ -582,13 +468,15 @@ footer {
 
         </select>
 
-        <br><br>
 
-        <select
-            id="subjectSelect">
+        <label>
+            Select Subject
+        </label>
+
+        <select id="subjectSelect">
 
             <option value="">
-                Select Subject
+                Choose Subject
             </option>
 
             <option>
@@ -625,7 +513,6 @@ footer {
 
         </select>
 
-        <br><br>
 
         <button
             class="primary"
@@ -634,6 +521,7 @@ footer {
             🔀 Generate New Quiz
 
         </button>
+
 
         <div
             id="quizArea"
@@ -646,9 +534,9 @@ footer {
 </section>
 
 
-<!-- =========================
+<!-- ==========================================
      RESEARCH
-========================= -->
+========================================== -->
 
 <section
     id="research"
@@ -661,23 +549,21 @@ footer {
         </h2>
 
         <p>
-            Research anything you want.
+            Search for any topic you want.
         </p>
 
         <br>
 
         <input
-            id="researchInput"
             type="text"
-            placeholder="Search any topic...">
-
-        <br><br>
+            id="researchInput"
+            placeholder="Example: Photosynthesis">
 
         <button
             class="primary"
             onclick="researchTopic()">
 
-            🔎 Research
+            🔎 Search
 
         </button>
 
@@ -692,176 +578,41 @@ footer {
 </section>
 
 
-<!-- =========================
+<!-- ==========================================
      PREMIUM
-========================= -->
+========================================== -->
 
 <section
     id="premium"
     class="section">
 
-    <div class="card">
 
-        <h2>
-            ⭐ StudyHubSA Premium
-        </h2>
-
-        <div
-            id="premiumPageStatus"
-            class="status-box">
-
-        </div>
-
-    </div>
-
+    <!-- PREMIUM INTRO -->
 
     <div class="card">
 
         <h2>
-            📚 Premium Sections
+            ⭐ Premium Study Resources
         </h2>
 
-        <div class="resource-grid">
+        <p>
+            Access previous years' papers,
+            memorandums and advanced
+            examination resources.
+        </p>
 
+        <br>
 
-            <!-- PAST PAPERS -->
-
-            <div class="resource-card">
-
-                <h3>
-                    📄 Past Papers
-                </h3>
-
-                <p>
-                    Previous years' papers.
-                </p>
-
-                <br>
-
-                <strong>
-                    R10 per paper
-                </strong>
-
-                <br><br>
-
-                <button
-                    class="primary"
-                    onclick="accessPremium('Past Papers')">
-
-                    Access
-
-                </button>
-
-            </div>
-
-
-            <!-- MEMOS -->
-
-            <div class="resource-card">
-
-                <h3>
-                    📝 Memos
-                </h3>
-
-                <p>
-                    Answer memorandums.
-                </p>
-
-                <br>
-
-                <strong>
-                    R10 per memo
-                </strong>
-
-                <br><br>
-
-                <button
-                    class="primary"
-                    onclick="accessPremium('Memos')">
-
-                    Access
-
-                </button>
-
-            </div>
-
-
-            <!-- RESOURCES -->
-
-            <div class="resource-card">
-
-                <h3>
-                    📚 Premium Study Resources
-                </h3>
-
-                <p>
-                    Extra notes, worksheets
-                    and study resources.
-                </p>
-
-                <br>
-
-                <strong>
-                    Premium
-                </strong>
-
-                <br><br>
-
-                <button
-                    class="primary"
-                    onclick="accessPremium('Premium Study Resources')">
-
-                    Access
-
-                </button>
-
-            </div>
-
-
-            <!-- EXAM PREP -->
-
-            <div class="resource-card">
-
-                <h3>
-                    ⭐ Premium Exam Prep
-                </h3>
-
-                <p>
-                    Advanced exam preparation.
-                </p>
-
-                <br>
-
-                <strong>
-                    Premium
-                </strong>
-
-                <br><br>
-
-                <button
-                    class="primary"
-                    onclick="accessPremium('Premium Exam Prep')">
-
-                    Access
-
-                </button>
-
-            </div>
-
-        </div>
+        <span class="premium-badge">
+            PREMIUM
+        </span>
 
     </div>
 
-</section>
 
-
-<!-- =========================
-     PAST PAPERS
-========================= -->
-
-<section
-    id="papers"
-    class="section">
+    <!-- ======================================
+         PAST PAPERS
+    ======================================= -->
 
     <div class="card">
 
@@ -870,21 +621,376 @@ footer {
         </h2>
 
         <p>
-            Past papers cost R10 each.
+            Previous years' examination papers.
+            Each paper costs R10.
         </p>
 
-        <br>
 
-        <button
-            class="primary"
-            onclick="accessPremium('Past Papers')">
+        <!-- GRADE 8 -->
 
-            View Past Papers
+        <h3 style="margin-top:25px;">
+            🎓 Grade 8
+        </h3>
 
-        </button>
+        <div class="paper-card">
+
+            <div>
+                <strong>
+                    Grade 8 Mathematics
+                </strong>
+
+                <br>
+
+                <span>
+                    2025 Question Paper
+                </span>
+
+                <br>
+
+                <span class="price">
+                    R10
+                </span>
+            </div>
+
+            <button
+                class="primary"
+                onclick="selectPremium(
+                    'Grade 8 Mathematics 2025 Past Paper'
+                )">
+
+                Buy / Access
+
+            </button>
+
+        </div>
+
+
+        <div class="paper-card">
+
+            <div>
+                <strong>
+                    Grade 8 Mathematics
+                </strong>
+
+                <br>
+
+                <span>
+                    2024 Question Paper
+                </span>
+
+                <br>
+
+                <span class="price">
+                    R10
+                </span>
+            </div>
+
+            <button
+                class="primary"
+                onclick="selectPremium(
+                    'Grade 8 Mathematics 2024 Past Paper'
+                )">
+
+                Buy / Access
+
+            </button>
+
+        </div>
+
+
+        <!-- GRADE 9 -->
+
+        <h3 style="margin-top:25px;">
+            🎓 Grade 9
+        </h3>
+
+        <div class="paper-card">
+
+            <div>
+                <strong>
+                    Grade 9 Mathematics
+                </strong>
+
+                <br>
+
+                <span>
+                    2025 Question Paper
+                </span>
+
+                <br>
+
+                <span class="price">
+                    R10
+                </span>
+            </div>
+
+            <button
+                class="primary"
+                onclick="selectPremium(
+                    'Grade 9 Mathematics 2025 Past Paper'
+                )">
+
+                Buy / Access
+
+            </button>
+
+        </div>
+
+
+        <div class="paper-card">
+
+            <div>
+                <strong>
+                    Grade 9 Mathematics
+                </strong>
+
+                <br>
+
+                <span>
+                    2024 Question Paper
+                </span>
+
+                <br>
+
+                <span class="price">
+                    R10
+                </span>
+            </div>
+
+            <button
+                class="primary"
+                onclick="selectPremium(
+                    'Grade 9 Mathematics 2024 Past Paper'
+                )">
+
+                Buy / Access
+
+            </button>
+
+        </div>
+
+
+        <!-- GRADE 10 -->
+
+        <h3 style="margin-top:25px;">
+            🎓 Grade 10
+        </h3>
+
+        <div class="paper-card">
+
+            <div>
+                <strong>
+                    Grade 10 Mathematics
+                </strong>
+
+                <br>
+
+                <span>
+                    2025 Question Paper
+                </span>
+
+                <br>
+
+                <span class="price">
+                    R10
+                </span>
+            </div>
+
+            <button
+                class="primary"
+                onclick="selectPremium(
+                    'Grade 10 Mathematics 2025 Past Paper'
+                )">
+
+                Buy / Access
+
+            </button>
+
+        </div>
+
+
+        <div class="paper-card">
+
+            <div>
+                <strong>
+                    Grade 10 Mathematics
+                </strong>
+
+                <br>
+
+                <span>
+                    2024 Question Paper
+                </span>
+
+                <br>
+
+                <span class="price">
+                    R10
+                </span>
+            </div>
+
+            <button
+                class="primary"
+                onclick="selectPremium(
+                    'Grade 10 Mathematics 2024 Past Paper'
+                )">
+
+                Buy / Access
+
+            </button>
+
+        </div>
+
+
+        <!-- GRADE 11 -->
+
+        <h3 style="margin-top:25px;">
+            🎓 Grade 11
+        </h3>
+
+        <div class="paper-card">
+
+            <div>
+                <strong>
+                    Grade 11 Mathematics
+                </strong>
+
+                <br>
+
+                <span>
+                    2025 Question Paper
+                </span>
+
+                <br>
+
+                <span class="price">
+                    R10
+                </span>
+            </div>
+
+            <button
+                class="primary"
+                onclick="selectPremium(
+                    'Grade 11 Mathematics 2025 Past Paper'
+                )">
+
+                Buy / Access
+
+            </button>
+
+        </div>
+
+
+        <div class="paper-card">
+
+            <div>
+                <strong>
+                    Grade 11 Mathematics
+                </strong>
+
+                <br>
+
+                <span>
+                    2024 Question Paper
+                </span>
+
+                <br>
+
+                <span class="price">
+                    R10
+                </span>
+            </div>
+
+            <button
+                class="primary"
+                onclick="selectPremium(
+                    'Grade 11 Mathematics 2024 Past Paper'
+                )">
+
+                Buy / Access
+
+            </button>
+
+        </div>
+
+
+        <!-- GRADE 12 -->
+
+        <h3 style="margin-top:25px;">
+            🎓 Grade 12
+        </h3>
+
+        <div class="paper-card">
+
+            <div>
+                <strong>
+                    Grade 12 Mathematics
+                </strong>
+
+                <br>
+
+                <span>
+                    2025 Question Paper
+                </span>
+
+                <br>
+
+                <span class="price">
+                    R10
+                </span>
+            </div>
+
+            <button
+                class="primary"
+                onclick="selectPremium(
+                    'Grade 12 Mathematics 2025 Past Paper'
+                )">
+
+                Buy / Access
+
+            </button>
+
+        </div>
+
+
+        <div class="paper-card">
+
+            <div>
+                <strong>
+                    Grade 12 Mathematics
+                </strong>
+
+                <br>
+
+                <span>
+                    2024 Question Paper
+                </span>
+
+                <br>
+
+                <span class="price">
+                    R10
+                </span>
+            </div>
+
+            <button
+                class="primary"
+                onclick="selectPremium(
+                    'Grade 12 Mathematics 2024 Past Paper'
+                )">
+
+                Buy / Access
+
+            </button>
+
+        </div>
 
     </div>
 
+
+    <!-- ======================================
+         MEMOS
+    ======================================= -->
 
     <div class="card">
 
@@ -893,18 +999,385 @@ footer {
         </h2>
 
         <p>
-            Memos cost R10 each.
+            Each memo costs R10 and matches
+            the relevant past paper.
+        </p>
+
+
+        <!-- GRADE 8 -->
+
+        <h3 style="margin-top:25px;">
+            🎓 Grade 8 Memos
+        </h3>
+
+        <div class="paper-card">
+
+            <div>
+
+                <strong>
+                    Grade 8 Mathematics
+                </strong>
+
+                <br>
+
+                <span>
+                    2025 Memo
+                </span>
+
+                <br>
+
+                <span class="price">
+                    R10
+                </span>
+
+            </div>
+
+            <button
+                class="primary"
+                onclick="selectPremium(
+                    'Grade 8 Mathematics 2025 Memo'
+                )">
+
+                Buy / Access
+
+            </button>
+
+        </div>
+
+
+        <div class="paper-card">
+
+            <div>
+
+                <strong>
+                    Grade 8 Mathematics
+                </strong>
+
+                <br>
+
+                <span>
+                    2024 Memo
+                </span>
+
+                <br>
+
+                <span class="price">
+                    R10
+                </span>
+
+            </div>
+
+            <button
+                class="primary"
+                onclick="selectPremium(
+                    'Grade 8 Mathematics 2024 Memo'
+                )">
+
+                Buy / Access
+
+            </button>
+
+        </div>
+
+
+        <!-- GRADE 9 -->
+
+        <h3 style="margin-top:25px;">
+            🎓 Grade 9 Memos
+        </h3>
+
+        <div class="paper-card">
+
+            <div>
+
+                <strong>
+                    Grade 9 Mathematics
+                </strong>
+
+                <br>
+
+                <span>
+                    2025 Memo
+                </span>
+
+                <br>
+
+                <span class="price">
+                    R10
+                </span>
+
+            </div>
+
+            <button
+                class="primary"
+                onclick="selectPremium(
+                    'Grade 9 Mathematics 2025 Memo'
+                )">
+
+                Buy / Access
+
+            </button>
+
+        </div>
+
+
+        <!-- GRADE 10 -->
+
+        <h3 style="margin-top:25px;">
+            🎓 Grade 10 Memos
+        </h3>
+
+        <div class="paper-card">
+
+            <div>
+
+                <strong>
+                    Grade 10 Mathematics
+                </strong>
+
+                <br>
+
+                <span>
+                    2025 Memo
+                </span>
+
+                <br>
+
+                <span class="price">
+                    R10
+                </span>
+
+            </div>
+
+            <button
+                class="primary"
+                onclick="selectPremium(
+                    'Grade 10 Mathematics 2025 Memo'
+                )">
+
+                Buy / Access
+
+            </button>
+
+        </div>
+
+
+        <!-- GRADE 11 -->
+
+        <h3 style="margin-top:25px;">
+            🎓 Grade 11 Memos
+        </h3>
+
+        <div class="paper-card">
+
+            <div>
+
+                <strong>
+                    Grade 11 Mathematics
+                </strong>
+
+                <br>
+
+                <span>
+                    2025 Memo
+                </span>
+
+                <br>
+
+                <span class="price">
+                    R10
+                </span>
+
+            </div>
+
+            <button
+                class="primary"
+                onclick="selectPremium(
+                    'Grade 11 Mathematics 2025 Memo'
+                )">
+
+                Buy / Access
+
+            </button>
+
+        </div>
+
+
+        <!-- GRADE 12 -->
+
+        <h3 style="margin-top:25px;">
+            🎓 Grade 12 Memos
+        </h3>
+
+        <div class="paper-card">
+
+            <div>
+
+                <strong>
+                    Grade 12 Mathematics
+                </strong>
+
+                <br>
+
+                <span>
+                    2025 Memo
+                </span>
+
+                <br>
+
+                <span class="price">
+                    R10
+                </span>
+
+            </div>
+
+            <button
+                class="primary"
+                onclick="selectPremium(
+                    'Grade 12 Mathematics 2025 Memo'
+                )">
+
+                Buy / Access
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==========================================
+     PAYMENT METHODS
+========================================== -->
+
+<section
+    id="payment"
+    class="section">
+
+    <div class="card">
+
+        <h2>
+            💳 Payment Methods
+        </h2>
+
+        <p>
+            You selected:
         </p>
 
         <br>
 
-        <button
-            class="primary"
-            onclick="accessPremium('Memos')">
+        <h3 id="selectedResource">
+            No resource selected
+        </h3>
 
-            View Memos
+        <p>
+            Amount:
+            <strong>
+                R10
+            </strong>
+        </p>
 
-        </button>
+    </div>
+
+
+    <div class="card">
+
+        <h2>
+            Choose Payment Method
+        </h2>
+
+
+        <!-- CARD -->
+
+        <div class="payment-card">
+
+            <h3>
+                💳 Bank Card
+            </h3>
+
+            <p>
+                Pay securely using a debit
+                or credit card.
+            </p>
+
+            <br>
+
+            <button
+                class="primary"
+                onclick="startPayment('Bank Card')">
+
+                Pay with Card
+
+            </button>
+
+        </div>
+
+
+        <!-- EFT -->
+
+        <div class="payment-card">
+
+            <h3>
+                🏦 EFT / Bank Transfer
+            </h3>
+
+            <p>
+                Pay via bank transfer.
+            </p>
+
+            <br>
+
+            <button
+                class="primary"
+                onclick="startPayment('EFT')">
+
+                Pay by EFT
+
+            </button>
+
+        </div>
+
+
+        <!-- PAYMENT GATEWAY -->
+
+        <div class="payment-card">
+
+            <h3>
+                🔐 Secure Online Payment
+            </h3>
+
+            <p>
+                Your payment gateway can be
+                connected here.
+            </p>
+
+            <br>
+
+            <button
+                class="primary"
+                onclick="startPayment('Online Payment')">
+
+                Continue
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <p class="small">
+
+            🔒 Important: This demo interface does
+            not confirm a real payment. A secure
+            payment provider must be connected before
+            learners receive access to purchased PDFs.
+
+        </p>
 
     </div>
 
@@ -914,9 +1387,9 @@ footer {
 </div>
 
 
-<!-- =========================
+<!-- ==========================================
      FOOTER
-========================= -->
+========================================== -->
 
 <footer>
 
@@ -925,7 +1398,7 @@ footer {
     </h3>
 
     <p>
-        Learn • Practise • Research • Succeed
+        Learn • Practice • Research • Succeed
     </p>
 
 </footer>
@@ -933,34 +1406,24 @@ footer {
 
 <script>
 
-/* =====================================
-   STUDYHUBSA 7 DAY SYSTEM
-===================================== */
+
+/* ==========================================
+   7 DAY / 2 DAY PREMIUM SYSTEM
+========================================== */
 
 const REQUIRED_DAYS = 7;
 
 const FREE_PREMIUM_DAYS = 2;
 
 
-/* =====================================
-   GET TODAY
-===================================== */
-
 function getToday() {
 
-    const date =
-        new Date();
-
-    return date
+    return new Date()
         .toISOString()
         .split("T")[0];
 
 }
 
-
-/* =====================================
-   GET SAVED STUDY DAYS
-===================================== */
 
 function getStudyDays() {
 
@@ -988,10 +1451,6 @@ function getStudyDays() {
 }
 
 
-/* =====================================
-   REGISTER DAILY USE
-===================================== */
-
 function registerDailyUse() {
 
     let days =
@@ -1000,10 +1459,6 @@ function registerDailyUse() {
     const today =
         getToday();
 
-
-    /*
-       Only count a day once.
-    */
 
     if (!days.includes(today)) {
 
@@ -1017,36 +1472,29 @@ function registerDailyUse() {
     }
 
 
+    startFreePremium();
+
     updatePremiumStatus();
 
 }
 
 
-/* =====================================
-   PREMIUM START DATE
-===================================== */
+function startFreePremium() {
 
-function getPremiumStart() {
+    const days =
+        getStudyDays();
 
-    return localStorage.getItem(
-        "studyhubsaPremiumStart"
-    );
-
-}
-
-
-/* =====================================
-   START FREE PASS
-===================================== */
-
-function startFreePass() {
 
     if (
-        getStudyDays().length >=
+        days.length >=
         REQUIRED_DAYS
     ) {
 
-        if (!getPremiumStart()) {
+        if (
+            !localStorage.getItem(
+                "studyhubsaPremiumStart"
+            )
+        ) {
 
             localStorage.setItem(
                 "studyhubsaPremiumStart",
@@ -1060,14 +1508,12 @@ function startFreePass() {
 }
 
 
-/* =====================================
-   CHECK FREE PREMIUM
-===================================== */
-
 function isPremiumFree() {
 
     const start =
-        getPremiumStart();
+        localStorage.getItem(
+            "studyhubsaPremiumStart"
+        );
 
 
     if (!start) {
@@ -1089,37 +1535,24 @@ function isPremiumFree() {
         );
 
 
-    const daysPassed =
+    const difference =
         Math.floor(
-            (
-                today -
-                startDate
-            ) /
-            (
-                1000 *
-                60 *
-                60 *
-                24
-            )
+            (today - startDate) /
+            (1000 * 60 * 60 * 24)
         );
 
 
-    return (
-        daysPassed <
-        FREE_PREMIUM_DAYS
-    );
+    return difference < FREE_PREMIUM_DAYS;
 
 }
 
 
-/* =====================================
-   PREMIUM DAYS LEFT
-===================================== */
-
 function premiumDaysLeft() {
 
     const start =
-        getPremiumStart();
+        localStorage.getItem(
+            "studyhubsaPremiumStart"
+        );
 
 
     if (!start) {
@@ -1141,33 +1574,21 @@ function premiumDaysLeft() {
         );
 
 
-    const daysPassed =
+    const difference =
         Math.floor(
-            (
-                today -
-                startDate
-            ) /
-            (
-                1000 *
-                60 *
-                60 *
-                24
-            )
+            (today - startDate) /
+            (1000 * 60 * 60 * 24)
         );
 
 
     return Math.max(
         0,
         FREE_PREMIUM_DAYS -
-        daysPassed
+        difference
     );
 
 }
 
-
-/* =====================================
-   UPDATE STATUS
-===================================== */
 
 function updatePremiumStatus() {
 
@@ -1181,186 +1602,158 @@ function updatePremiumStatus() {
         );
 
 
-    const pageStatus =
-        document.getElementById(
-            "premiumPageStatus"
-        );
-
-
     const progress =
         document.getElementById(
             "studyProgress"
         );
 
 
-    /*
-       FREE PREMIUM ACTIVE
-    */
-
     if (isPremiumFree()) {
 
-        const remaining =
-            premiumDaysLeft();
-
-
-        const message = `
+        status.innerHTML = `
 
             🎉 <strong>
-            YOUR FREE PREMIUM PASS IS ACTIVE!
+            FREE PREMIUM ACTIVE!
             </strong>
 
             <br><br>
 
             You have
             <strong>
-            ${remaining}
+            ${premiumDaysLeft()}
             </strong>
-            day(s) of free Premium access remaining.
+            day(s) remaining.
 
             <br><br>
 
-            You can access:
-
-            <br>
-
-            📄 Past Papers<br>
-            📝 Memos<br>
-            📚 Premium Study Resources<br>
-            ⭐ Premium Exam Prep
+            You can access Past Papers,
+            Memos and Premium Resources
+            for free during this period.
 
         `;
 
 
-        if (status) {
-
-            status.innerHTML =
-                message;
-
-        }
-
-
-        if (pageStatus) {
-
-            pageStatus.innerHTML =
-                message;
-
-        }
-
-
-        if (progress) {
-
-            progress.value =
-                REQUIRED_DAYS;
-
-        }
+        progress.value =
+            REQUIRED_DAYS;
 
 
         return;
 
     }
 
-
-    /*
-       SEVEN DAYS COMPLETED
-    */
-
-    if (
-        days >=
-        REQUIRED_DAYS
-    ) {
-
-        startFreePass();
-
-        updatePremiumStatus();
-
-        return;
-
-    }
-
-
-    /*
-       STILL WORKING TOWARDS
-       FREE PREMIUM
-    */
 
     const remaining =
-        REQUIRED_DAYS -
-        days;
+        Math.max(
+            0,
+            REQUIRED_DAYS - days
+        );
 
 
-    const message = `
+    status.innerHTML = `
 
-        📚 You have used
+        📚 StudyHubSA usage:
         <strong>
-        StudyHubSA for ${days}
-        different day(s).
+        ${days}/${REQUIRED_DAYS} days
         </strong>
 
         <br><br>
 
-        Use StudyHubSA for
-        <strong>
-        ${remaining}
-        more day(s)
-        </strong>
+        ${
+            remaining > 0
 
-        to unlock your
+            ? `
+                Use StudyHubSA for
+                <strong>
+                ${remaining}
+                </strong>
+                more day(s) to unlock
+                your 2-day FREE Premium Pass!
+            `
 
-        <strong>
-        2-DAY FREE PREMIUM PASS!
-        </strong>
+            : `
+                🎉 Your Premium Pass is
+                ready to activate!
+            `
+        }
 
     `;
 
 
-    if (status) {
-
-        status.innerHTML =
-            message;
-
-    }
-
-
-    if (pageStatus) {
-
-        pageStatus.innerHTML =
-            message;
-
-    }
-
-
-    if (progress) {
-
-        progress.value =
-            days;
-
-    }
+    progress.value =
+        Math.min(
+            days,
+            REQUIRED_DAYS
+        );
 
 }
 
 
-/* =====================================
-   ACCESS PREMIUM
-===================================== */
+/* ==========================================
+   SELECT PREMIUM RESOURCE
+========================================== */
 
-function accessPremium(sectionName) {
+function selectPremium(resourceName) {
 
     /*
-       FREE PASS
+       If learner has the free Premium Pass,
+       allow access without payment.
     */
 
     if (isPremiumFree()) {
 
         alert(
+            "🎉 Your 2-day FREE Premium Pass is active!"
+        );
 
-            "🎉 FREE PREMIUM ACCESS!\n\n" +
+        /*
+           This is where the actual PDF link
+           will open after your files are uploaded.
+        */
 
-            sectionName +
+        return;
 
-            " is available to you for free " +
+    }
 
-            "during your 2-day Premium Pass."
 
+    /*
+       Otherwise send learner directly
+       to Payment Methods.
+    */
+
+    const selected =
+        document.getElementById(
+            "selectedResource"
+        );
+
+
+    selected.textContent =
+        resourceName;
+
+
+    showSection("payment");
+
+}
+
+
+/* ==========================================
+   PAYMENT
+========================================== */
+
+function startPayment(method) {
+
+    const resource =
+        document.getElementById(
+            "selectedResource"
+        ).textContent;
+
+
+    if (
+        resource ===
+        "No resource selected"
+    ) {
+
+        alert(
+            "Please select a Premium resource first."
         );
 
         return;
@@ -1369,31 +1762,31 @@ function accessPremium(sectionName) {
 
 
     /*
-       PREMIUM LOCKED
+       IMPORTANT:
+       This is only the front-end payment screen.
+       It does not falsely confirm payment.
     */
 
     alert(
 
-        "🔒 Premium Section\n\n" +
+        "Payment Method: " +
+        method +
 
-        sectionName +
+        "\n\nResource: " +
+        resource +
 
-        " is currently locked.\n\n" +
+        "\n\nAmount: R10\n\n" +
 
-        "You can unlock your 2-day FREE Premium Pass " +
-
-        "after using StudyHubSA for 7 different days.\n\n" +
-
-        "Past Papers and Memos cost R10 each."
+        "The real payment gateway must be connected here before payment can be processed."
 
     );
 
 }
 
 
-/* =====================================
+/* ==========================================
    RESEARCH
-===================================== */
+========================================== */
 
 function researchTopic() {
 
@@ -1416,7 +1809,7 @@ function researchTopic() {
     if (!topic) {
 
         alert(
-            "Please enter something to research."
+            "Please enter a topic."
         );
 
         return;
@@ -1424,9 +1817,8 @@ function researchTopic() {
     }
 
 
-    const searchURL =
+    const url =
         "https://www.google.com/search?q=" +
-
         encodeURIComponent(topic);
 
 
@@ -1441,20 +1833,14 @@ function researchTopic() {
 
             <br>
 
-            <p>
-                Click below to research this topic.
-            </p>
-
-            <br>
-
             <a
-                href="${searchURL}"
+                href="${url}"
                 target="_blank"
                 rel="noopener">
 
                 <button class="primary">
 
-                    🔎 Search the Web
+                    Search the Web
 
                 </button>
 
@@ -1466,10 +1852,6 @@ function researchTopic() {
 
 }
 
-
-/* =====================================
-   ESCAPE HTML
-===================================== */
 
 function escapeHTML(text) {
 
@@ -1484,9 +1866,9 @@ function escapeHTML(text) {
 }
 
 
-/* =====================================
-   SIMPLE SMART QUIZ
-===================================== */
+/* ==========================================
+   SMART QUIZ
+========================================== */
 
 function startQuiz() {
 
@@ -1513,27 +1895,6 @@ function startQuiz() {
     }
 
 
-    const questions = [
-
-        `What is an important concept to understand in ${subject} at Grade ${grade}?`,
-
-        `Which skill is useful when studying ${subject}?`,
-
-        `Which approach would help you solve a difficult ${subject} problem?`,
-
-        `Why is understanding ${subject} important?`,
-
-        `Which statement best demonstrates critical thinking in ${subject}?`
-
-    ];
-
-
-    const shuffled =
-        questions.sort(
-            () => Math.random() - 0.5
-        );
-
-
     const quizArea =
         document.getElementById(
             "quizArea"
@@ -1545,36 +1906,20 @@ function startQuiz() {
         <div class="status-box">
 
             <h3>
-                Grade ${grade}
+                🎯 Grade ${grade}
                 ${subject} Quiz
             </h3>
 
             <p>
-                A new quiz has been generated.
+                New questions generated!
             </p>
 
             <br>
 
-            ${shuffled.map(
-                (question, index) => `
-
-                    <p>
-                        <strong>
-                        ${index + 1}.
-                        </strong>
-                        ${question}
-                    </p>
-
-                    <br>
-
-                `
-            ).join("")}
-
             <p>
-                🎯 Your full adaptive
-                question bank can be expanded
-                with subject-specific questions
-                for every grade.
+                The full adaptive question bank
+                can be expanded with different
+                difficulty levels for each grade.
             </p>
 
         </div>
@@ -1584,9 +1929,9 @@ function startQuiz() {
 }
 
 
-/* =====================================
+/* ==========================================
    NAVIGATION
-===================================== */
+========================================== */
 
 function showSection(sectionID) {
 
@@ -1632,9 +1977,9 @@ function showSection(sectionID) {
 }
 
 
-/* =====================================
-   START SYSTEM
-===================================== */
+/* ==========================================
+   START WEBSITE
+========================================== */
 
 document.addEventListener(
     "DOMContentLoaded",
