@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyHubSA | Study Smarter</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f7fb;
+      color: #1f2937;
+    }
+
+    header {
+      background: #0b3d91;
+      color: white;
+      padding: 20px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 80px 20px;
+      background: white;
+    }
+
+    .hero h1 {
+      font-size: 45px;
+      color: #0b3d91;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+
+    .button {
+      display: inline-block;
+      background: #0b3d91;
+      color: white;
+      padding: 14px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .subjects {
+      padding: 50px 8%;
+      text-align: center;
+    }
+
+    .subjects h2 {
+      margin-bottom: 30px;
+      font-size: 32px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 30px 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .card h3 {
+      color: #0b3d91;
+      margin-bottom: 10px;
+    }
+
+    footer {
+      text-align: center;
+      background: #0b3d91;
+      color: white;
+      padding: 25px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">📚 StudyHubSA</div>
+
+    <nav>
+      <a href="#">Home</a>
+      <a href="#subjects">Subjects</a>
+      <a href="#">About</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Study Smarter. Ace Your Exams. 🇿🇦</h1>
+
+    <p>
+      South Africa's smart study platform for Grades 4–12.
+    </p>
+
+    <a href="#subjects" class="button">Start Studying</a>
+  </section>
+
+  <section class="subjects" id="subjects">
+
+    <h2>Explore Your Subjects</h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <h3>📐 Mathematics</h3>
+        <p>Study notes, practice questions and exam preparation.</p>
+      </div>
+
+      <div class="card">
+        <h3>🔬 Science</h3>
+        <p>Understand difficult concepts and prepare for tests.</p>
+      </div>
+
+      <div class="card">
+        <h3>📖 English</h3>
+        <p>Improve your language skills and exam confidence.</p>
+      </div>
+
+      <div class="card">
+        <h3>🌍 Geography</h3>
+        <p>Learn smarter with useful study resources.</p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <footer>
+    <p>© 2026 StudyHubSA. Built for South African learners 🇿🇦</p>
+  </footer>
+
+</body>
+</html>
