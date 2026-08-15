@@ -662,7 +662,7 @@ progress {
     <h3>💳 Debit / Credit Card</h3>
 
     <p>
-        Secure online card payment.
+        Secure online card payment through your connected payment provider. Card details should be entered only on the provider's secure checkout.
     </p>
 
     <button class="primary"
@@ -698,8 +698,7 @@ progress {
     <h3>🔐 Online Payment Gateway</h3>
 
     <p>
-        Connect your preferred payment provider
-        to this section.
+        Connect your preferred secure payment provider here.
     </p>
 
     <button class="primary"
@@ -1930,38 +1929,87 @@ function selectPremium(
 function startPayment(method) {
 
     const resource =
-        document.getElementById(
-            "selectedResource"
-        ).textContent;
-
+        document.getElementById("selectedResource").textContent;
 
     const price =
-        document.getElementById(
-            "selectedPrice"
-        ).textContent;
+        document.getElementById("selectedPrice").textContent;
 
-
-    if (
-        resource ===
-        "No resource selected"
-    ) {
-
-        alert(
-            "Please select a Premium resource first."
-        );
-
+    if (resource === "No resource selected") {
+        alert("Please select a Premium resource first.");
         return;
     }
 
+    if (method === "EFT") {
+        showBankPaymentForm();
+        return;
+    }
+
+    if (method === "Card" || method === "Online Gateway") {
+        alert(
+            "Your secure payment gateway still needs to be connected.\n\n" +
+            "Resource: " + resource +
+            "\nPrice: " + price +
+            "\n\nFor safety, card numbers, CVV and PINs should be entered only on the payment provider's secure checkout page."
+        );
+    }
+}
+
+function showBankPaymentForm() {
+    const resource =
+        document.getElementById("selectedResource").textContent;
+
+    if (resource === "No resource selected") {
+        alert("Please select a Premium resource first.");
+        return;
+    }
+
+    const form = document.getElementById("bankPaymentForm");
+    if (form) {
+        form.style.display = "block";
+        form.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+}
+
+function submitBankPayment(event) {
+    event.preventDefault();
+
+    const resource =
+        document.getElementById("selectedResource").textContent;
+
+    const price =
+        document.getElementById("selectedPrice").textContent;
+
+    const name =
+        document.getElementById("payerName").value.trim();
+
+    const email =
+        document.getElementById("payerEmail").value.trim();
+
+    const bank =
+        document.getElementById("payerBank").value;
+
+    const reference =
+        document.getElementById("paymentReference").value.trim();
+
+    if (!name || !email || !bank || !reference) {
+        alert("Please complete all required payment details.");
+        return;
+    }
+
+    /*
+       IMPORTANT:
+       This demo validates the form only.
+       Do NOT store account numbers or banking details in localStorage.
+       In production, send payment information only through your
+       trusted payment provider/backend over HTTPS.
+    */
 
     alert(
-        "Payment Method: " +
-        method +
-        "\n\nResource: " +
-        resource +
-        "\n\nPrice: " +
-        price +
-        "\n\nA real payment gateway must be connected here before accepting payments."
+        "EFT payment details captured for checkout.\n\n" +
+        "Resource: " + resource +
+        "\nPrice: " + price +
+        "\nReference: " + reference +
+        "\n\nConnect this form to your secure payment provider/backend to confirm the payment."
     );
 }
 
