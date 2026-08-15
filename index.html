@@ -1,706 +1,1273 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>StudyHubSA</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>StudyHubSA | Study Smarter</title>
 
 <style>
-body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:linear-gradient(135deg,#0f172a,#1d4ed8,#7c3aed,#06b6d4);
-  background-size:400% 400%;
-  animation:bgMove 15s ease infinite;
-  color:white;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-@keyframes bgMove{
-  0%{background-position:0% 50%;}
-  50%{background-position:100% 50%;}
-  100%{background-position:0% 50%;}
+body {
+    background:
+        linear-gradient(rgba(8,20,45,0.88), rgba(8,20,45,0.94)),
+        radial-gradient(circle at top right, #00d4ff, transparent 35%),
+        radial-gradient(circle at bottom left, #7c3aed, transparent 35%);
+    color: white;
+    min-height: 100vh;
 }
 
-.hero{
-  text-align:center;
-  padding:80px 20px;
+header {
+    background: rgba(5,15,35,0.96);
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.35);
 }
 
-.hero-btn{
-  display:inline-block;
-  margin-top:20px;
-  padding:15px 30px;
-  background:#facc15;
-  color:#111827;
-  text-decoration:none;
-  border-radius:50px;
-  font-weight:bold;
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
-.resource-card{
-  background:rgba(255,255,255,.12);
-  border-radius:20px;
-  padding:20px;
-  margin:15px;
-}
-</style>
-</head>
-<body> 
-<section class="hero">
-  <h1>🎓 StudyHubSA</h1>
-  <p>South Africa's Smart Study Platform for Grades 4–12</p>
-  <a href="#resources" class="hero-btn">Start Learning Free</a>
-</section>
-  <section id="resources">
-  <h2>📚 Study Resources</h2>
-  <p>Choose your grade and subject.</p>
-
-  <div class="resources-grid">
-<section id="grade4-maths-term1">
-<!-- =========================================
-     STUDYHUBSA RESOURCE LIBRARY
-     GRADES 4–12
-========================================= -->
-
-<section id="resources">
-
-  <div class="resources-title">
-    <span>📚</span>
-    <h2>StudyHubSA Resource Library</h2>
-    <p>
-      Original learning resources for South African learners.
-      Choose your grade and subject to start learning.
-    </p>
-  </div>
-
-  <!-- GRADES -->
-  <div id="gradeButtons" class="grade-buttons"></div>
-
-  <!-- SUBJECTS + RESOURCES -->
-  <div id="resourceArea"></div>
-
-</section>
-
-
-<style>
-
-/* =========================
-   RESOURCES
-========================= */
-
-#resources {
-  padding: 70px 20px;
-  max-width: 1200px;
-  margin: auto;
+.logo-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: linear-gradient(135deg,#00d4ff,#7c3aed);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    box-shadow: 0 0 20px rgba(0,212,255,0.4);
 }
 
-.resources-title {
-  text-align: center;
-  margin-bottom: 40px;
+.logo h1 {
+    font-size: 24px;
 }
 
-.resources-title span {
-  font-size: 45px;
+.logo span {
+    color: #00d4ff;
 }
 
-.resources-title h2 {
-  font-size: 38px;
-  margin: 10px 0;
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
 }
 
-.resources-title p {
-  font-size: 17px;
-  line-height: 1.6;
+nav a:hover {
+    color: #00d4ff;
 }
 
-
-/* =========================
-   GRADE BUTTONS
-========================= */
-
-.grade-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 40px;
+.hero {
+    padding: 80px 7%;
+    text-align: center;
 }
 
-.grade-btn {
-  border: none;
-  padding: 13px 20px;
-  border-radius: 30px;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 15px;
-  transition: 0.3s;
+.hero h2 {
+    font-size: clamp(38px, 7vw, 70px);
+    margin-bottom: 20px;
 }
 
-.grade-btn:hover {
-  transform: translateY(-4px) scale(1.03);
+.hero h2 span {
+    color: #00d4ff;
 }
 
-.grade-btn.active {
-  transform: scale(1.06);
+.hero p {
+    max-width: 750px;
+    margin: auto;
+    font-size: 19px;
+    line-height: 1.6;
+    color: #dce8ff;
 }
 
+.button {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 14px 28px;
+    background: linear-gradient(135deg,#00d4ff,#7c3aed);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(0,212,255,0.25);
+}
 
-/* =========================
-   SUBJECT GRID
-========================= */
+.button:hover {
+    transform: translateY(-2px);
+}
+
+section {
+    padding: 60px 7%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.section-title h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.section-title p {
+    color: #bdc9df;
+}
+
+/* GRADE CARDS */
+
+.grade-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+    gap: 20px;
+}
+
+.grade-card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 28px;
+    border-radius: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.grade-card:hover {
+    transform: translateY(-7px);
+    background: rgba(0,212,255,0.12);
+    border-color: #00d4ff;
+}
+
+.grade-card h3 {
+    font-size: 27px;
+    margin-bottom: 8px;
+}
+
+.grade-card p {
+    color: #b8c6dc;
+}
+
+/* SUBJECTS */
+
+.subject-container {
+    margin-top: 30px;
+}
 
 .subject-grid {
-  display: grid;
-  grid-template-columns:
-    repeat(auto-fit, minmax(230px, 1fr));
-
-  gap: 20px;
-  margin-top: 25px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(210px,1fr));
+    gap: 18px;
 }
 
 .subject-card {
-  padding: 25px;
-  border-radius: 22px;
-
-  background: rgba(255,255,255,0.13);
-
-  backdrop-filter: blur(15px);
-
-  border: 1px solid rgba(255,255,255,0.25);
-
-  box-shadow:
-    0 12px 35px rgba(0,0,0,0.18);
-
-  transition: 0.3s;
-}
-
-.subject-card:hover {
-  transform: translateY(-8px);
+    background: rgba(255,255,255,0.07);
+    padding: 22px;
+    border-radius: 18px;
+    border-left: 4px solid #00d4ff;
 }
 
 .subject-card h3 {
-  font-size: 21px;
-  margin-top: 0;
+    margin-bottom: 8px;
 }
 
 .subject-card p {
-  line-height: 1.5;
+    color: #c2cee0;
+    line-height: 1.5;
 }
 
-.subject-btn {
-  width: 100%;
-  border: none;
-  padding: 12px;
-  border-radius: 12px;
-  cursor: pointer;
-  font-weight: bold;
-  margin-top: 10px;
+.subject-card button {
+    margin-top: 15px;
 }
 
+/* QUIZ */
 
-/* =========================
-   RESOURCE PAGE
-========================= */
-
-.resource-page {
-  margin-top: 30px;
-  padding: 35px;
-
-  border-radius: 25px;
-
-  background: rgba(255,255,255,0.12);
-
-  backdrop-filter: blur(15px);
-
-  border: 1px solid rgba(255,255,255,0.25);
-
-  box-shadow:
-    0 15px 40px rgba(0,0,0,0.20);
+.quiz-box {
+    max-width: 850px;
+    margin: auto;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 30px;
+    border-radius: 22px;
 }
 
-.resource-page h2 {
-  margin-top: 0;
-  font-size: 30px;
+select {
+    width: 100%;
+    padding: 14px;
+    margin: 8px 0 18px;
+    border-radius: 10px;
+    border: none;
 }
 
-.resource-box {
-  margin-top: 25px;
-  padding: 23px;
-
-  border-radius: 18px;
-
-  background: rgba(255,255,255,0.08);
+.question {
+    margin-top: 25px;
 }
 
-.resource-box h3 {
-  margin-top: 0;
+.question h3 {
+    margin-bottom: 18px;
 }
 
-.resource-box li {
-  margin-bottom: 8px;
+.option {
+    display: block;
+    background: rgba(255,255,255,0.08);
+    padding: 14px;
+    border-radius: 10px;
+    margin: 9px 0;
+    cursor: pointer;
 }
 
-.back-btn {
-  border: none;
-  padding: 12px 18px;
-  border-radius: 12px;
-  cursor: pointer;
-  font-weight: bold;
-  margin-top: 20px;
+.option:hover {
+    background: rgba(0,212,255,0.15);
 }
 
+.result {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 12px;
+    background: rgba(0,212,255,0.1);
+}
+
+/* RESOURCES */
+
+.resource-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+    gap: 20px;
+}
+
+.resource-card {
+    background: rgba(255,255,255,0.08);
+    padding: 25px;
+    border-radius: 20px;
+}
+
+.resource-card h3 {
+    color: #00d4ff;
+    margin-bottom: 10px;
+}
+
+.resource-card ul {
+    padding-left: 20px;
+    line-height: 1.8;
+    color: #d3dcec;
+}
+
+/* BADGE */
+
+.badge-section {
+    text-align: center;
+}
+
+.badge {
+    width: 180px;
+    height: 180px;
+    margin: 30px auto;
+    border-radius: 50%;
+    background: linear-gradient(135deg,#ffd700,#ff8c00);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #221500;
+    box-shadow: 0 0 45px rgba(255,190,0,0.35);
+}
+
+.badge strong {
+    font-size: 45px;
+}
+
+.badge.locked {
+    background: #364152;
+    color: #aab4c5;
+    box-shadow: none;
+}
+
+/* RESEARCH */
+
+.research-box {
+    max-width: 800px;
+    margin: auto;
+    background: rgba(255,255,255,0.08);
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.research-box input {
+    width: 100%;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 10px;
+    border: none;
+    font-size: 16px;
+}
+
+.status {
+    margin: 15px 0;
+    color: #00d4ff;
+    font-weight: bold;
+}
+
+footer {
+    margin-top: 50px;
+    padding: 35px;
+    background: #050f23;
+    text-align: center;
+    color: #9ba9c0;
+}
+
+@media(max-width:700px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav a {
+        margin: 5px;
+        font-size: 13px;
+    }
+
+    .hero {
+        padding-top: 55px;
+    }
+}
 </style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+    <div class="logo-icon">🎓</div>
+    <h1>Study<span>HubSA</span></h1>
+</div>
+
+<nav>
+    <a href="#grades">Grades</a>
+    <a href="#resources">Resources</a>
+    <a href="#quiz">Quiz</a>
+    <a href="#badge">Badge</a>
+    <a href="#research">Research</a>
+</nav>
+
+</header>
+
+
+<section class="hero">
+
+<h2>Study Smarter.<br><span>Achieve More.</span></h2>
+
+<p>
+Welcome to StudyHubSA — a South African study platform designed
+to help learners from Grade 8 to Grade 12 prepare, practise,
+test themselves and improve their marks.
+</p>
+
+<a href="#grades" class="button">Start Studying 🚀</a>
+
+</section>
+
+
+<!-- GRADES -->
+
+<section id="grades">
+
+<div class="section-title">
+<h2>Choose Your Grade</h2>
+<p>Select your grade to discover your subjects and resources.</p>
+</div>
+
+<div class="grade-grid">
+
+<div class="grade-card" onclick="showGrade(8)">
+<h3>Grade 8</h3>
+<p>GET Phase</p>
+</div>
+
+<div class="grade-card" onclick="showGrade(9)">
+<h3>Grade 9</h3>
+<p>GET Phase</p>
+</div>
+
+<div class="grade-card" onclick="showGrade(10)">
+<h3>Grade 10</h3>
+<p>FET Phase</p>
+</div>
+
+<div class="grade-card" onclick="showGrade(11)">
+<h3>Grade 11</h3>
+<p>FET Phase</p>
+</div>
+
+<div class="grade-card" onclick="showGrade(12)">
+<h3>Grade 12</h3>
+<p>Matric</p>
+</div>
+
+</div>
+
+<div id="subjects" class="subject-container"></div>
+
+</section>
+
+
+<!-- RESOURCES -->
+
+<section id="resources">
+
+<div class="section-title">
+
+<h2>📚 Study Resources</h2>
+
+<p>
+CAPS-aligned topics, revision material, exam preparation
+and practice resources.
+</p>
+
+</div>
+
+<div class="resource-grid">
+
+<div class="resource-card">
+<h3>📐 Mathematics</h3>
+<ul>
+<li>Algebra</li>
+<li>Functions</li>
+<li>Geometry</li>
+<li>Statistics</li>
+<li>Probability</li>
+</ul>
+</div>
+
+<div class="resource-card">
+<h3>🔬 Physical Sciences</h3>
+<ul>
+<li>Mechanics</li>
+<li>Waves</li>
+<li>Electricity</li>
+<li>Chemical Reactions</li>
+<li>Organic Chemistry</li>
+</ul>
+</div>
+
+<div class="resource-card">
+<h3>🧬 Life Sciences</h3>
+<ul>
+<li>Cells</li>
+<li>Genetics</li>
+<li>Human Biology</li>
+<li>Ecology</li>
+<li>Evolution</li>
+</ul>
+</div>
+
+<div class="resource-card">
+<h3>🌍 Geography</h3>
+<ul>
+<li>Map Work</li>
+<li>Climate</li>
+<li>Development</li>
+<li>Geomorphology</li>
+<li>GIS</li>
+</ul>
+</div>
+
+<div class="resource-card">
+<h3>📖 Languages</h3>
+<ul>
+<li>Comprehension</li>
+<li>Grammar</li>
+<li>Creative Writing</li>
+<li>Literature</li>
+<li>Exam Preparation</li>
+</ul>
+</div>
+
+<div class="resource-card">
+<h3>💼 Business & EMS</h3>
+<ul>
+<li>Entrepreneurship</li>
+<li>Accounting basics</li>
+<li>Business environments</li>
+<li>Financial literacy</li>
+<li>Economic concepts</li>
+</ul>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- QUIZ -->
+
+<section id="quiz">
+
+<div class="section-title">
+
+<h2>🧠 Smart Quiz Generator</h2>
+
+<p>
+Questions are randomly selected and the correct memo is automatically
+updated for every new quiz.
+</p>
+
+</div>
+
+<div class="quiz-box">
+
+<label>Choose Grade</label>
+
+<select id="quizGrade">
+<option value="8">Grade 8</option>
+<option value="9">Grade 9</option>
+<option value="10">Grade 10</option>
+<option value="11">Grade 11</option>
+<option value="12">Grade 12</option>
+</select>
+
+<label>Choose Subject</label>
+
+<select id="quizSubject">
+<option value="Mathematics">Mathematics</option>
+<option value="Science">Science</option>
+<option value="English">English</option>
+<option value="Geography">Geography</option>
+</select>
+
+<button class="button" onclick="generateQuiz()">
+Generate New Quiz 🔀
+</button>
+
+<div id="quizArea"></div>
+
+</div>
+
+</section>
+
+
+<!-- BADGE -->
+
+<section id="badge" class="badge-section">
+
+<div class="section-title">
+
+<h2>🏆 StudyHubSA 7-Day Badge</h2>
+
+<p>
+Study consistently for 7 days and unlock 48 hours of free Research Mode.
+</p>
+
+</div>
+
+<div id="badgeDisplay" class="badge locked">
+
+<strong>🔒</strong>
+<span>7 Day Badge</span>
+
+</div>
+
+<div id="streakText" class="status">
+Checking your study streak...
+</div>
+
+</section>
+
+
+<!-- RESEARCH -->
+
+<section id="research">
+
+<div class="section-title">
+
+<h2>🔎 Research Mode</h2>
+
+<p>
+Use Research Mode to find information for school projects,
+assignments and learning.
+</p>
+
+</div>
+
+<div class="research-box">
+
+<div id="researchStatus" class="status">
+Research Mode is locked.
+</div>
+
+<input
+id="researchInput"
+type="text"
+placeholder="What do you want to research?"
+>
+
+<button class="button" onclick="research()">
+Search Research 🔎
+</button>
+
+<p style="margin-top:20px;color:#aebbd0;">
+Research Mode becomes available for 48 hours after
+earning your 7-Day StudyHubSA Badge.
+</p>
+
+</div>
+
+</section>
+
+
+<footer>
+
+<p>© 2026 StudyHubSA | Study Smarter. Achieve More. 🇿🇦</p>
+
+<p style="margin-top:10px;">
+Built for learners from Grade 8 to Grade 12.
+</p>
+
+</footer>
 
 
 <script>
 
-/* =========================================
-   STUDYHUBSA SUBJECT DATABASE
-========================================= */
+/* =========================
+   SUBJECTS
+========================= */
 
-const studyHubSubjects = {
+const subjects = {
 
-  "Grade 4": [
-    "Mathematics",
-    "English",
-    "Afrikaans",
-    "Natural Sciences",
-    "Social Sciences"
-  ],
+8: [
+["Mathematics","Numbers, Algebra, Geometry, Measurement and Data"],
+["English","Language, Comprehension, Writing and Literature"],
+["Natural Sciences","Matter, Energy, Cells, Forces and Ecosystems"],
+["Social Sciences","History, Geography and Map Skills"],
+["Economic & Management Sciences","Economics, Business and Financial Literacy"],
+["Technology","Design, Structures, Processing and Systems"],
+["Life Orientation","Personal development, health and social responsibility"],
+["Creative Arts","Visual Arts, Drama, Music and Dance"]
+],
 
-  "Grade 5": [
-    "Mathematics",
-    "English",
-    "Afrikaans",
-    "Natural Sciences",
-    "Social Sciences"
-  ],
+9: [
+["Mathematics","Algebra, Geometry, Statistics, Probability and Functions"],
+["English","Comprehension, Grammar, Writing and Literature"],
+["Natural Sciences","Chemistry, Physics, Life Sciences and Environment"],
+["Social Sciences","History, Geography, Development and Map Skills"],
+["Economic & Management Sciences","Entrepreneurship, Economy and Financial Literacy"],
+["Technology","Design, Structures, Processing and Mechanical Systems"],
+["Life Orientation","Health, careers, citizenship and personal development"],
+["Creative Arts","Art, Drama, Music and Dance"]
+],
 
-  "Grade 6": [
-    "Mathematics",
-    "English",
-    "Afrikaans",
-    "Natural Sciences",
-    "Social Sciences"
-  ],
+10: [
+["Mathematics","Algebra, Functions, Finance, Probability and Euclidean Geometry"],
+["Physical Sciences","Mechanics, Matter, Waves, Chemistry and Electricity"],
+["Life Sciences","Cells, Biomolecules, Genetics and Biodiversity"],
+["Geography","Climate, Geomorphology, Development and Map Work"],
+["History","Colonisation, Industrialisation and Historical Skills"],
+["Accounting","Financial Accounting and Accounting Concepts"],
+["Business Studies","Business Environments and Entrepreneurship"],
+["English","Language, Literature, Writing and Comprehension"],
+["Life Orientation","Development, citizenship, careers and health"]
+],
 
-  "Grade 7": [
-    "Mathematics",
-    "English",
-    "Afrikaans",
-    "Natural Sciences",
-    "Social Sciences",
-    "EMS"
-  ],
+11: [
+["Mathematics","Functions, Trigonometry, Analytical Geometry, Statistics and Probability"],
+["Physical Sciences","Mechanics, Waves, Electricity, Chemistry and Organic Chemistry"],
+["Life Sciences","DNA, Genetics, Evolution, Human Biology and Ecology"],
+["Geography","Geomorphology, Climate, Development and GIS"],
+["History","Nationalism, Colonialism and Historical Analysis"],
+["Accounting","Financial Statements and Accounting Concepts"],
+["Business Studies","Business Operations, Management and Entrepreneurship"],
+["English","Language, Literature and Advanced Writing"],
+["Life Orientation","Citizenship, careers, health and personal development"]
+],
 
-  "Grade 8": [
-    "Mathematics",
-    "English",
-    "Afrikaans",
-    "Natural Sciences",
-    "Social Sciences",
-    "EMS",
-    "Technology"
-  ],
-
-  "Grade 9": [
-    "Mathematics",
-    "English",
-    "Afrikaans",
-    "Natural Sciences",
-    "Social Sciences",
-    "EMS",
-    "Technology"
-  ],
-
-  "Grade 10": [
-    "Mathematics",
-    "Mathematical Literacy",
-    "English",
-    "Afrikaans",
-    "Physical Sciences",
-    "Life Sciences",
-    "Accounting",
-    "Business Studies",
-    "Economics",
-    "Geography",
-    "History",
-    "CAT",
-    "Information Technology",
-    "Tourism",
-    "Agricultural Sciences"
-  ],
-
-  "Grade 11": [
-    "Mathematics",
-    "Mathematical Literacy",
-    "English",
-    "Afrikaans",
-    "Physical Sciences",
-    "Life Sciences",
-    "Accounting",
-    "Business Studies",
-    "Economics",
-    "Geography",
-    "History",
-    "CAT",
-    "Information Technology",
-    "Tourism",
-    "Agricultural Sciences"
-  ],
-
-  "Grade 12": [
-    "Mathematics",
-    "Mathematical Literacy",
-    "English",
-    "Afrikaans",
-    "Physical Sciences",
-    "Life Sciences",
-    "Accounting",
-    "Business Studies",
-    "Economics",
-    "Geography",
-    "History",
-    "CAT",
-    "Information Technology",
-    "Tourism",
-    "Agricultural Sciences"
-  ]
+12: [
+["Mathematics","Functions, Calculus, Probability, Statistics, Trigonometry and Finance"],
+["Mathematical Literacy","Finance, Measurement, Data Handling, Probability and Maps"],
+["Physical Sciences","Mechanics, Electricity, Waves, Chemistry and Organic Chemistry"],
+["Life Sciences","Genetics, Evolution, Human Biology and Ecology"],
+["Geography","Climate, Geomorphology, Development and GIS"],
+["History","Source-Based Questions, Essays and Historical Interpretation"],
+["Accounting","Financial Reporting, Analysis and Cost Accounting"],
+["Business Studies","Business Environments, Operations and Entrepreneurship"],
+["English","Comprehension, Literature, Language and Writing"],
+["Life Orientation","Citizenship, careers, health and personal development"]
+]
 
 };
 
 
-/* =========================================
-   CREATE GRADE BUTTONS
-========================================= */
-
-const gradeButtons =
-  document.getElementById("gradeButtons");
-
-const resourceArea =
-  document.getElementById("resourceArea");
-
-
-Object.keys(studyHubSubjects).forEach(
-  (grade, index) => {
-
-    const button =
-      document.createElement("button");
-
-    button.className = "grade-btn";
-
-    button.innerHTML =
-      "🎓 " + grade;
-
-    button.onclick = function () {
-
-      showGrade(grade);
-
-      document
-        .querySelectorAll(".grade-btn")
-        .forEach(btn =>
-          btn.classList.remove("active")
-        );
-
-      button.classList.add("active");
-
-    };
-
-    gradeButtons.appendChild(button);
-
-    /* Open Grade 4 automatically */
-    if (index === 0) {
-
-      button.classList.add("active");
-
-      showGrade(grade);
-
-    }
-
-  }
-);
-
-
-/* =========================================
+/* =========================
    SHOW SUBJECTS
-========================================= */
+========================= */
 
 function showGrade(grade) {
 
-  let html = `
+    const container = document.getElementById("subjects");
 
-    <div class="resource-page">
-
-      <h2>🎓 ${grade} Resources</h2>
-
-      <p>
-        Choose a subject below to access
-        StudyHubSA's learning resources.
-      </p>
-
-      <div class="subject-grid">
-
-  `;
-
-
-  studyHubSubjects[grade].forEach(
-    subject => {
-
-      html += `
-
-        <div class="subject-card">
-
-          <h3>📘 ${subject}</h3>
-
-          <p>
-            Study Notes • Worksheets •
-            Challenges • Memorandum
-          </p>
-
-          <button
-            class="subject-btn"
-            onclick="openSubject('${grade}', '${subject}')">
-
-            🚀 Start Learning
-
-          </button>
-
+    container.innerHTML = `
+        <div class="section-title">
+            <h2>Grade ${grade} Subjects</h2>
+            <p>Select a subject to begin studying.</p>
         </div>
 
-      `;
+        <div class="subject-grid">
+            ${subjects[grade].map(subject => `
+                <div class="subject-card">
+                    <h3>${subject[0]}</h3>
+                    <p>${subject[1]}</p>
+                    <button
+                    class="button"
+                    onclick="selectQuizSubject('${subject[0]}')">
+                    Practise Quiz
+                    </button>
+                </div>
+            `).join("")}
+        </div>
+    `;
+
+    document.getElementById("subjects")
+    .scrollIntoView({behavior:"smooth"});
+}
+
+
+/* =========================
+   QUIZ QUESTION BANK
+========================= */
+
+const quizBank = {
+
+Mathematics: [
+
+{
+q:"What is 15 × 4?",
+options:["45","50","60","75"],
+answer:"60"
+},
+
+{
+q:"Solve: 2x + 6 = 14",
+options:["2","3","4","5"],
+answer:"4"
+},
+
+{
+q:"What is the square root of 144?",
+options:["10","11","12","14"],
+answer:"12"
+},
+
+{
+q:"What is 25% of 200?",
+options:["25","40","50","75"],
+answer:"50"
+},
+
+{
+q:"If y = 2x + 3 and x = 4, what is y?",
+options:["7","9","10","11"],
+answer:"11"
+}
+
+],
+
+Science: [
+
+{
+q:"Which organelle is known as the powerhouse of the cell?",
+options:["Nucleus","Mitochondria","Ribosome","Cell wall"],
+answer:"Mitochondria"
+},
+
+{
+q:"What force pulls objects towards Earth?",
+options:["Friction","Magnetism","Gravity","Pressure"],
+answer:"Gravity"
+},
+
+{
+q:"What gas do plants mainly use during photosynthesis?",
+options:["Oxygen","Nitrogen","Carbon dioxide","Hydrogen"],
+answer:"Carbon dioxide"
+},
+
+{
+q:"What is the chemical formula for water?",
+options:["CO2","H2O","O2","NaCl"],
+answer:"H2O"
+},
+
+{
+q:"Which particle has a negative charge?",
+options:["Proton","Neutron","Electron","Nucleus"],
+answer:"Electron"
+}
+
+],
+
+English: [
+
+{
+q:"Which word is a noun?",
+options:["Quickly","Beautiful","School","Run"],
+answer:"School"
+},
+
+{
+q:"Choose the correct plural of 'child'.",
+options:["Childs","Childes","Children","Childrens"],
+answer:"Children"
+},
+
+{
+q:"What is a synonym for 'happy'?",
+options:["Sad","Joyful","Angry","Tired"],
+answer:"Joyful"
+},
+
+{
+q:"Which sentence is written correctly?",
+options:[
+"She go to school.",
+"She goes to school.",
+"She going school.",
+"She gone school."
+],
+answer:"She goes to school."
+},
+
+{
+q:"What is the opposite of 'ancient'?",
+options:["Old","Historic","Modern","Past"],
+answer:"Modern"
+}
+
+],
+
+Geography: [
+
+{
+q:"Which instrument measures temperature?",
+options:["Barometer","Thermometer","Rain gauge","Anemometer"],
+answer:"Thermometer"
+},
+
+{
+q:"What is the imaginary line at 0° latitude called?",
+options:["Prime Meridian","Equator","Tropic of Capricorn","Arctic Circle"],
+answer:"Equator"
+},
+
+{
+q:"Which layer of Earth is directly beneath the crust?",
+options:["Inner core","Outer core","Mantle","Atmosphere"],
+answer:"Mantle"
+},
+
+{
+q:"What does GIS stand for?",
+options:[
+"Global Information System",
+"Geographic Information System",
+"Geological Internet System",
+"Global Internet Service"
+],
+answer:"Geographic Information System"
+},
+
+{
+q:"Which process describes water changing from liquid to gas?",
+options:["Condensation","Freezing","Evaporation","Precipitation"],
+answer:"Evaporation"
+}
+
+]
+
+};
+
+
+/* =========================
+   QUIZ SYSTEM
+========================= */
+
+let currentQuiz = [];
+let currentQuestion = 0;
+let score = 0;
+
+function selectQuizSubject(subject) {
+
+    const select = document.getElementById("quizSubject");
+
+    const optionExists =
+        [...select.options].some(
+            option => option.value === subject
+        );
+
+    if(optionExists) {
+        select.value = subject;
+    } else {
+
+        if(subject === "Natural Sciences" ||
+           subject === "Physical Sciences") {
+
+            select.value = "Science";
+
+        } else {
+
+            select.value = "English";
+
+        }
+    }
+
+    document.getElementById("quiz")
+    .scrollIntoView({behavior:"smooth"});
+
+    generateQuiz();
+}
+
+
+function shuffle(array) {
+
+    return array.sort(() => Math.random() - 0.5);
+
+}
+
+
+function generateQuiz() {
+
+    const subject =
+        document.getElementById("quizSubject").value;
+
+    currentQuiz =
+        shuffle([...quizBank[subject]]).slice(0,5);
+
+    currentQuestion = 0;
+    score = 0;
+
+    showQuestion();
+
+}
+
+
+function showQuestion() {
+
+    if(currentQuestion >= currentQuiz.length) {
+
+        document.getElementById("quizArea").innerHTML = `
+
+            <div class="result">
+
+                <h2>🎉 Quiz Complete!</h2>
+
+                <p>
+                Your score:
+                <strong>
+                ${score}/${currentQuiz.length}
+                </strong>
+                </p>
+
+                <button class="button"
+                onclick="generateQuiz()">
+                Try Another Quiz 🔀
+                </button>
+
+            </div>
+        `;
+
+        return;
+    }
+
+    const question =
+        currentQuiz[currentQuestion];
+
+    document.getElementById("quizArea").innerHTML = `
+
+        <div class="question">
+
+            <h3>
+            Question ${currentQuestion + 1}:
+            ${question.q}
+            </h3>
+
+            ${shuffle([...question.options])
+            .map(option => `
+                <div
+                class="option"
+                onclick="checkAnswer('${option.replace(/'/g,"\\'")}')">
+                ${option}
+                </div>
+            `).join("")}
+
+        </div>
+    `;
+}
+
+
+function checkAnswer(selected) {
+
+    const correct =
+        currentQuiz[currentQuestion].answer;
+
+    if(selected === correct) {
+
+        score++;
+
+        alert("✅ Correct!");
+
+    } else {
+
+        alert(
+        "❌ Not quite.\n\n" +
+        "Correct answer: " + correct
+        );
 
     }
-  );
+
+    currentQuestion++;
+
+    showQuestion();
+}
 
 
-  html += `
+/* =========================
+   7 DAY STREAK SYSTEM
+========================= */
 
-      </div>
+function getToday() {
 
-    </div>
-
-  `;
-
-
-  resourceArea.innerHTML = html;
+    return new Date()
+    .toISOString()
+    .split("T")[0];
 
 }
 
 
-/* =========================================
-   OPEN SUBJECT RESOURCE
-========================================= */
+function updateStudyStreak() {
 
-function openSubject(grade, subject) {
+    const today = getToday();
 
-  resourceArea.innerHTML = `
+    let data =
+        JSON.parse(
+            localStorage.getItem("studyHubData")
+        ) || {
+            streak:0,
+            lastStudy:null,
+            badge:false,
+            researchUntil:null
+        };
 
-    <div class="resource-page">
 
-      <h2>
-        📚 ${grade} — ${subject}
-      </h2>
+    if(data.lastStudy !== today) {
 
-      <p>
-        Welcome to your StudyHubSA
-        ${subject} learning resource.
-      </p>
+        if(data.lastStudy) {
 
+            const previous =
+                new Date(data.lastStudy);
 
-      <!-- NOTES -->
+            const current =
+                new Date(today);
 
-      <div class="resource-box">
+            const difference =
+                Math.round(
+                    (current - previous) /
+                    (1000*60*60*24)
+                );
 
-        <h3>📘 Study Notes</h3>
+            if(difference === 1) {
 
-        <p>
-          StudyHubSA original learning notes
-          for ${grade} ${subject}.
-        </p>
+                data.streak++;
 
-        <h4>Learning Goals</h4>
+            } else {
 
-        <ul>
+                data.streak = 1;
 
-          <li>
-            Understand the key concepts.
-          </li>
+            }
 
-          <li>
-            Learn important terminology.
-          </li>
+        } else {
 
-          <li>
-            Study examples carefully.
-          </li>
+            data.streak = 1;
 
-          <li>
-            Practise applying your knowledge.
-          </li>
+        }
 
-          <li>
-            Review difficult areas.
-          </li>
+        data.lastStudy = today;
 
-        </ul>
+        if(data.streak >= 7 && !data.badge) {
 
-        <h4>💡 Study Tip</h4>
+            data.badge = true;
 
-        <p>
-          Read the lesson carefully and try
-          to explain the main idea in your
-          own words.
-        </p>
+            data.researchUntil =
+                Date.now() +
+                (48 * 60 * 60 * 1000);
 
-      </div>
+            alert(
+            "🏆 Congratulations!\n\n" +
+            "You completed 7 days of studying!\n\n" +
+            "Your StudyHubSA Badge has been unlocked."
+            );
 
+        }
 
-      <!-- WORKSHEET -->
+        localStorage.setItem(
+            "studyHubData",
+            JSON.stringify(data)
+        );
 
-      <div class="resource-box">
+    }
 
-        <h3>📝 Practice Worksheet</h3>
-
-        <p>
-          <strong>Question 1:</strong>
-          Write three important facts you
-          learned about ${subject}.
-        </p>
-
-        <p>
-          <strong>Question 2:</strong>
-          Explain one important concept
-          in your own words.
-        </p>
-
-        <p>
-          <strong>Question 3:</strong>
-          Give one real-life example of
-          how ${subject} can be useful.
-        </p>
-
-        <p>
-          <strong>Question 4:</strong>
-          Write five important keywords
-          related to ${subject}.
-        </p>
-
-        <p>
-          <strong>Question 5:</strong>
-          Write one question you would
-          ask your teacher about this topic.
-        </p>
-
-      </div>
-
-
-      <!-- CHALLENGE -->
-
-      <div class="resource-box">
-
-        <h3>🧠 Challenge Zone</h3>
-
-        <p>
-          Imagine you are the teacher!
-        </p>
-
-        <p>
-          Create a difficult question about
-          ${subject} and then write the
-          correct answer.
-        </p>
-
-        <p>
-          ⭐ Bonus: Explain why your answer
-          is correct.
-        </p>
-
-      </div>
-
-
-      <!-- MEMORANDUM -->
-
-      <div class="resource-box">
-
-        <h3>✅ Memorandum</h3>
-
-        <p>
-          Compare your answers with the
-          following guidelines:
-        </p>
-
-        <ul>
-
-          <li>
-            Answers must be relevant to
-            the question.
-          </li>
-
-          <li>
-            Important terms should be
-            used correctly.
-          </li>
-
-          <li>
-            Explanations should be clear
-            and complete.
-          </li>
-
-          <li>
-            Examples must relate to the
-            subject.
-          </li>
-
-        </ul>
-
-      </div>
-
-
-      <!-- COMPLETION -->
-
-      <div class="resource-box">
-
-        <h3>🏆 Well Done!</h3>
-
-        <p>
-          You have completed this
-          StudyHubSA learning activity.
-        </p>
-
-        <p>
-          <strong>
-            Study Smarter.
-            Learn Better.
-            Build Your Future. 🚀
-          </strong>
-        </p>
-
-      </div>
-
-
-      <button
-        class="back-btn"
-        onclick="showGrade('${grade}')">
-
-        ← Back to ${grade} Subjects
-
-      </button>
-
-    </div>
-
-  `;
-
-
-  document
-    .getElementById("resources")
-    .scrollIntoView({
-      behavior: "smooth"
-    });
+    displayBadge(data);
 
 }
+
+
+function displayBadge(data) {
+
+    const badge =
+        document.getElementById("badgeDisplay");
+
+    const streak =
+        document.getElementById("streakText");
+
+    if(data.badge) {
+
+        badge.classList.remove("locked");
+
+        badge.innerHTML = `
+            <strong>🏆</strong>
+            <span>7 Day Badge</span>
+        `;
+
+        streak.innerHTML =
+        "🔥 Study streak: " +
+        data.streak +
+        " days — Badge unlocked!";
+
+    } else {
+
+        badge.classList.add("locked");
+
+        badge.innerHTML = `
+            <strong>🔒</strong>
+            <span>7 Day Badge</span>
+        `;
+
+        streak.innerHTML =
+        "🔥 Study streak: " +
+        data.streak +
+        " / 7 days";
+    }
+
+    updateResearchStatus(data);
+
+}
+
+
+/* =========================
+   RESEARCH MODE
+========================= */
+
+function updateResearchStatus(data) {
+
+    const status =
+        document.getElementById("researchStatus");
+
+    if(
+        data.researchUntil &&
+        Date.now() < data.researchUntil
+    ) {
+
+        const hours =
+            Math.ceil(
+                (data.researchUntil -
+                Date.now()) /
+                (1000*60*60)
+            );
+
+        status.innerHTML =
+        "🔓 Research Mode unlocked! " +
+        hours +
+        " hour(s) remaining.";
+
+    } else {
+
+        status.innerHTML =
+        "🔒 Research Mode is locked. " +
+        "Complete your 7-day study streak to unlock it.";
+
+    }
+
+}
+
+
+function research() {
+
+    const data =
+        JSON.parse(
+            localStorage.getItem("studyHubData")
+        ) || {};
+
+    if(
+        !data.researchUntil ||
+        Date.now() >= data.researchUntil
+    ) {
+
+        alert(
+        "🔒 Research Mode is locked.\n\n" +
+        "Study for 7 days to earn your badge."
+        );
+
+        return;
+
+    }
+
+
+    const query =
+        document.getElementById(
+            "researchInput"
+        ).value.trim();
+
+
+    if(!query) {
+
+        alert("Please enter something to research.");
+
+        return;
+
+    }
+
+
+    window.open(
+        "https://www.google.com/search?q=" +
+        encodeURIComponent(
+            query + " educational"
+        ),
+        "_blank"
+    );
+
+}
+
+
+/* =========================
+   START SYSTEM
+========================= */
+
+updateStudyStreak();
 
 </script>
-</section>
-  </div>
-  </body>
+
+</body>
 </html>
