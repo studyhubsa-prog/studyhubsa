@@ -4,1268 +4,1646 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>StudyHubSA | Study Smarter</title>
+<title>StudyHubSA | Smart Study Platform</title>
 
 <style>
+
+/* =========================
+   ORIGINAL STUDYHUBSA STYLE
+========================= */
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
+    font-family: Arial, sans-serif;
+
+    /* ORIGINAL BACKGROUND */
     background:
-        linear-gradient(rgba(8,20,45,0.88), rgba(8,20,45,0.94)),
-        radial-gradient(circle at top right, #00d4ff, transparent 35%),
-        radial-gradient(circle at bottom left, #7c3aed, transparent 35%);
+        linear-gradient(
+            135deg,
+            #071a33,
+            #0d47a1,
+            #00a896
+        );
+
     color: white;
     min-height: 100vh;
 }
 
+
+/* HEADER */
+
 header {
-    background: rgba(5,15,35,0.96);
-    padding: 18px 7%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 5px 25px rgba(0,0,0,0.35);
+    background: rgba(0,0,0,0.45);
+    padding: 25px;
+    text-align: center;
+    border-bottom: 2px solid rgba(255,255,255,0.2);
 }
 
 .logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.logo-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 14px;
-    background: linear-gradient(135deg,#00d4ff,#7c3aed);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 25px;
-    box-shadow: 0 0 20px rgba(0,212,255,0.4);
-}
-
-.logo h1 {
-    font-size: 24px;
+    font-size: 34px;
+    font-weight: bold;
 }
 
 .logo span {
-    color: #00d4ff;
+    color: #00e5ff;
 }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    margin-left: 20px;
-    font-weight: bold;
+header p {
+    margin-top: 8px;
 }
 
-nav a:hover {
-    color: #00d4ff;
-}
 
-.hero {
-    padding: 80px 7%;
-    text-align: center;
-}
+/* NAVIGATION */
 
-.hero h2 {
-    font-size: clamp(38px, 7vw, 70px);
-    margin-bottom: 20px;
-}
-
-.hero h2 span {
-    color: #00d4ff;
-}
-
-.hero p {
-    max-width: 750px;
-    margin: auto;
-    font-size: 19px;
-    line-height: 1.6;
-    color: #dce8ff;
-}
-
-.button {
-    display: inline-block;
-    margin-top: 30px;
-    padding: 14px 28px;
-    background: linear-gradient(135deg,#00d4ff,#7c3aed);
-    color: white;
-    text-decoration: none;
-    border-radius: 30px;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 8px 25px rgba(0,212,255,0.25);
-}
-
-.button:hover {
-    transform: translateY(-2px);
-}
-
-section {
-    padding: 60px 7%;
-}
-
-.section-title {
-    text-align: center;
-    margin-bottom: 35px;
-}
-
-.section-title h2 {
-    font-size: 36px;
-    margin-bottom: 10px;
-}
-
-.section-title p {
-    color: #bdc9df;
-}
-
-/* GRADE CARDS */
-
-.grade-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
-    gap: 20px;
-}
-
-.grade-card {
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.12);
-    padding: 28px;
-    border-radius: 20px;
-    text-align: center;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.grade-card:hover {
-    transform: translateY(-7px);
-    background: rgba(0,212,255,0.12);
-    border-color: #00d4ff;
-}
-
-.grade-card h3 {
-    font-size: 27px;
-    margin-bottom: 8px;
-}
-
-.grade-card p {
-    color: #b8c6dc;
-}
-
-/* SUBJECTS */
-
-.subject-container {
-    margin-top: 30px;
-}
-
-.subject-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(210px,1fr));
-    gap: 18px;
-}
-
-.subject-card {
-    background: rgba(255,255,255,0.07);
-    padding: 22px;
-    border-radius: 18px;
-    border-left: 4px solid #00d4ff;
-}
-
-.subject-card h3 {
-    margin-bottom: 8px;
-}
-
-.subject-card p {
-    color: #c2cee0;
-    line-height: 1.5;
-}
-
-.subject-card button {
-    margin-top: 15px;
-}
-
-/* QUIZ */
-
-.quiz-box {
-    max-width: 850px;
-    margin: auto;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.12);
-    padding: 30px;
-    border-radius: 22px;
-}
-
-select {
-    width: 100%;
-    padding: 14px;
-    margin: 8px 0 18px;
-    border-radius: 10px;
-    border: none;
-}
-
-.question {
-    margin-top: 25px;
-}
-
-.question h3 {
-    margin-bottom: 18px;
-}
-
-.option {
-    display: block;
-    background: rgba(255,255,255,0.08);
-    padding: 14px;
-    border-radius: 10px;
-    margin: 9px 0;
-    cursor: pointer;
-}
-
-.option:hover {
-    background: rgba(0,212,255,0.15);
-}
-
-.result {
-    margin-top: 20px;
+nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
     padding: 15px;
-    border-radius: 12px;
-    background: rgba(0,212,255,0.1);
+    background: rgba(0,0,0,0.25);
 }
 
-/* RESOURCES */
+nav button {
+    border: none;
+    padding: 12px 18px;
+    border-radius: 25px;
+    cursor: pointer;
+    background: white;
+    color: #073b74;
+    font-weight: bold;
+}
+
+nav button:hover {
+    background: #00e5ff;
+}
+
+
+/* CONTAINER */
+
+.container {
+    width: 94%;
+    max-width: 1200px;
+    margin: 30px auto;
+}
+
+
+/* SECTIONS */
+
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+
+/* CARDS */
+
+.card {
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 18px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+
+/* HEADINGS */
+
+h1,
+h2,
+h3 {
+    margin-bottom: 15px;
+}
+
+
+/* BUTTONS */
+
+.primary {
+    background: #00e5ff;
+    color: #00334d;
+    border: none;
+    padding: 13px 22px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.primary:hover {
+    transform: scale(1.03);
+}
+
+
+/* GRID */
 
 .resource-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
-    gap: 20px;
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(220px, 1fr)
+        );
+
+    gap: 15px;
 }
+
+
+/* RESOURCE CARDS */
 
 .resource-card {
-    background: rgba(255,255,255,0.08);
-    padding: 25px;
-    border-radius: 20px;
+    background: rgba(255,255,255,0.12);
+    padding: 20px;
+    border-radius: 15px;
 }
 
-.resource-card h3 {
-    color: #00d4ff;
-    margin-bottom: 10px;
+
+/* PRICE */
+
+.price {
+    font-size: 24px;
+    font-weight: bold;
+    color: #00e5ff;
 }
 
-.resource-card ul {
-    padding-left: 20px;
-    line-height: 1.8;
-    color: #d3dcec;
+
+/* STATUS */
+
+.status-box {
+    padding: 18px;
+    border-radius: 15px;
+    background: rgba(0,0,0,0.25);
+    margin-top: 15px;
 }
 
-/* BADGE */
 
-.badge-section {
-    text-align: center;
-}
+/* PROGRESS */
 
-.badge {
-    width: 180px;
-    height: 180px;
-    margin: 30px auto;
-    border-radius: 50%;
-    background: linear-gradient(135deg,#ffd700,#ff8c00);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    color: #221500;
-    box-shadow: 0 0 45px rgba(255,190,0,0.35);
-}
-
-.badge strong {
-    font-size: 45px;
-}
-
-.badge.locked {
-    background: #364152;
-    color: #aab4c5;
-    box-shadow: none;
-}
-
-/* RESEARCH */
-
-.research-box {
-    max-width: 800px;
-    margin: auto;
-    background: rgba(255,255,255,0.08);
-    padding: 30px;
-    border-radius: 20px;
-    text-align: center;
-}
-
-.research-box input {
+progress {
     width: 100%;
-    padding: 15px;
-    margin: 20px 0;
-    border-radius: 10px;
-    border: none;
-    font-size: 16px;
+    height: 20px;
 }
 
-.status {
-    margin: 15px 0;
-    color: #00d4ff;
+
+/* PREMIUM BADGE */
+
+.premium-badge {
+    display: inline-block;
+    padding: 8px 15px;
+    background: #00e5ff;
+    color: #00334d;
+    border-radius: 20px;
     font-weight: bold;
 }
 
+
+/* FREE BADGE */
+
+.free-badge {
+    display: inline-block;
+    padding: 8px 15px;
+    background: #27ae60;
+    color: white;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+
+/* FOOTER */
+
 footer {
-    margin-top: 50px;
-    padding: 35px;
-    background: #050f23;
     text-align: center;
-    color: #9ba9c0;
+    padding: 30px;
+    margin-top: 40px;
+    background: rgba(0,0,0,0.35);
 }
 
-@media(max-width:700px) {
-    header {
-        flex-direction: column;
-        gap: 15px;
+
+/* MOBILE */
+
+@media(max-width:600px) {
+
+    .logo {
+        font-size: 27px;
     }
 
-    nav a {
-        margin: 5px;
-        font-size: 13px;
-    }
-
-    .hero {
-        padding-top: 55px;
-    }
 }
+
 </style>
 </head>
 
+
 <body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
 
 <header>
 
-<div class="logo">
-    <div class="logo-icon">🎓</div>
-    <h1>Study<span>HubSA</span></h1>
-</div>
+    <div class="logo">
+        StudyHub<span>SA</span>
+    </div>
 
-<nav>
-    <a href="#grades">Grades</a>
-    <a href="#resources">Resources</a>
-    <a href="#quiz">Quiz</a>
-    <a href="#badge">Badge</a>
-    <a href="#research">Research</a>
-</nav>
+    <p>
+        South Africa's Smart Study Platform
+    </p>
 
 </header>
 
 
-<section class="hero">
+<!-- =========================
+     NAVIGATION
+========================= -->
 
-<h2>Study Smarter.<br><span>Achieve More.</span></h2>
+<nav>
 
-<p>
-Welcome to StudyHubSA — a South African study platform designed
-to help learners from Grade 8 to Grade 12 prepare, practise,
-test themselves and improve their marks.
-</p>
+    <button onclick="showSection('home')">
+        🏠 Home
+    </button>
 
-<a href="#grades" class="button">Start Studying 🚀</a>
+    <button onclick="showSection('quiz')">
+        🎯 Smart Quiz
+    </button>
 
-</section>
+    <button onclick="showSection('research')">
+        🔬 Research
+    </button>
 
+    <button onclick="showSection('premium')">
+        ⭐ Premium
+    </button>
 
-<!-- GRADES -->
+    <button onclick="showSection('papers')">
+        📄 Past Papers
+    </button>
 
-<section id="grades">
+</nav>
 
-<div class="section-title">
-<h2>Choose Your Grade</h2>
-<p>Select your grade to discover your subjects and resources.</p>
-</div>
 
-<div class="grade-grid">
+<div class="container">
 
-<div class="grade-card" onclick="showGrade(8)">
-<h3>Grade 8</h3>
-<p>GET Phase</p>
-</div>
 
-<div class="grade-card" onclick="showGrade(9)">
-<h3>Grade 9</h3>
-<p>GET Phase</p>
-</div>
+<!-- =========================
+     HOME
+========================= -->
 
-<div class="grade-card" onclick="showGrade(10)">
-<h3>Grade 10</h3>
-<p>FET Phase</p>
-</div>
-
-<div class="grade-card" onclick="showGrade(11)">
-<h3>Grade 11</h3>
-<p>FET Phase</p>
-</div>
-
-<div class="grade-card" onclick="showGrade(12)">
-<h3>Grade 12</h3>
-<p>Matric</p>
-</div>
-
-</div>
-
-<div id="subjects" class="subject-container"></div>
-
-</section>
-
-
-<!-- RESOURCES -->
-
-<section id="resources">
-
-<div class="section-title">
-
-<h2>📚 Study Resources</h2>
-
-<p>
-CAPS-aligned topics, revision material, exam preparation
-and practice resources.
-</p>
-
-</div>
-
-<div class="resource-grid">
-
-<div class="resource-card">
-<h3>📐 Mathematics</h3>
-<ul>
-<li>Algebra</li>
-<li>Functions</li>
-<li>Geometry</li>
-<li>Statistics</li>
-<li>Probability</li>
-</ul>
-</div>
-
-<div class="resource-card">
-<h3>🔬 Physical Sciences</h3>
-<ul>
-<li>Mechanics</li>
-<li>Waves</li>
-<li>Electricity</li>
-<li>Chemical Reactions</li>
-<li>Organic Chemistry</li>
-</ul>
-</div>
-
-<div class="resource-card">
-<h3>🧬 Life Sciences</h3>
-<ul>
-<li>Cells</li>
-<li>Genetics</li>
-<li>Human Biology</li>
-<li>Ecology</li>
-<li>Evolution</li>
-</ul>
-</div>
-
-<div class="resource-card">
-<h3>🌍 Geography</h3>
-<ul>
-<li>Map Work</li>
-<li>Climate</li>
-<li>Development</li>
-<li>Geomorphology</li>
-<li>GIS</li>
-</ul>
-</div>
-
-<div class="resource-card">
-<h3>📖 Languages</h3>
-<ul>
-<li>Comprehension</li>
-<li>Grammar</li>
-<li>Creative Writing</li>
-<li>Literature</li>
-<li>Exam Preparation</li>
-</ul>
-</div>
-
-<div class="resource-card">
-<h3>💼 Business & EMS</h3>
-<ul>
-<li>Entrepreneurship</li>
-<li>Accounting basics</li>
-<li>Business environments</li>
-<li>Financial literacy</li>
-<li>Economic concepts</li>
-</ul>
-</div>
-
-</div>
-
-</section>
-
-
-<!-- QUIZ -->
-
-<section id="quiz">
-
-<div class="section-title">
-
-<h2>🧠 Smart Quiz Generator</h2>
-
-<p>
-Questions are randomly selected and the correct memo is automatically
-updated for every new quiz.
-</p>
-
-</div>
-
-<div class="quiz-box">
-
-<label>Choose Grade</label>
-
-<select id="quizGrade">
-<option value="8">Grade 8</option>
-<option value="9">Grade 9</option>
-<option value="10">Grade 10</option>
-<option value="11">Grade 11</option>
-<option value="12">Grade 12</option>
-</select>
-
-<label>Choose Subject</label>
-
-<select id="quizSubject">
-<option value="Mathematics">Mathematics</option>
-<option value="Science">Science</option>
-<option value="English">English</option>
-<option value="Geography">Geography</option>
-</select>
-
-<button class="button" onclick="generateQuiz()">
-Generate New Quiz 🔀
-</button>
-
-<div id="quizArea"></div>
-
-</div>
-
-</section>
-
-
-<!-- BADGE -->
-
-<section id="badge" class="badge-section">
-
-<div class="section-title">
-
-<h2>🏆 StudyHubSA 7-Day Badge</h2>
-
-<p>
-Study consistently for 7 days and unlock 48 hours of free Research Mode.
-</p>
-
-</div>
-
-<div id="badgeDisplay" class="badge locked">
-
-<strong>🔒</strong>
-<span>7 Day Badge</span>
-
-</div>
-
-<div id="streakText" class="status">
-Checking your study streak...
-</div>
-
-</section>
-
-
-<!-- RESEARCH -->
-
-<section id="research">
-
-<div class="section-title">
-
-<h2>🔎 Research Mode</h2>
-
-<p>
-Use Research Mode to find information for school projects,
-assignments and learning.
-</p>
-
-</div>
-
-<div class="research-box">
-
-<div id="researchStatus" class="status">
-Research Mode is locked.
-</div>
-
-<input
-id="researchInput"
-type="text"
-placeholder="What do you want to research?"
+<section
+    id="home"
+    class="section active"
 >
 
-<button class="button" onclick="research()">
-Search Research 🔎
-</button>
+    <div class="card">
 
-<p style="margin-top:20px;color:#aebbd0;">
-Research Mode becomes available for 48 hours after
-earning your 7-Day StudyHubSA Badge.
-</p>
+        <h1>
+            Welcome to StudyHubSA 📚
+        </h1>
 
-</div>
+        <p>
+            Learn smarter, practise harder
+            and prepare for success.
+        </p>
+
+        <br>
+
+        <button
+            class="primary"
+            onclick="showSection('quiz')">
+
+            🎯 Start Smart Quiz
+
+        </button>
+
+        <button
+            class="primary"
+            onclick="showSection('research')">
+
+            🔬 Start Research
+
+        </button>
+
+    </div>
+
+
+    <!-- PREMIUM STATUS -->
+
+    <div class="card">
+
+        <h2>
+            ⭐ Your StudyHubSA Premium Status
+        </h2>
+
+        <div
+            id="premiumStatus"
+            class="status-box">
+
+            Loading...
+
+        </div>
+
+        <br>
+
+        <progress
+            id="studyProgress"
+            value="0"
+            max="7">
+        </progress>
+
+    </div>
+
+
+    <!-- FREE FEATURES -->
+
+    <div class="card">
+
+        <h2>
+            🆓 Free Features
+        </h2>
+
+        <div class="resource-grid">
+
+            <div class="resource-card">
+
+                <h3>
+                    🔬 Research
+                </h3>
+
+                <p>
+                    Research topics and find
+                    information about subjects.
+                </p>
+
+                <br>
+
+                <span class="free-badge">
+                    FREE
+                </span>
+
+            </div>
+
+
+            <div class="resource-card">
+
+                <h3>
+                    🎯 Smart Quizzes
+                </h3>
+
+                <p>
+                    Practise with grade and
+                    subject-based quizzes.
+                </p>
+
+                <br>
+
+                <span class="free-badge">
+                    FREE
+                </span>
+
+            </div>
+
+
+            <div class="resource-card">
+
+                <h3>
+                    🏠 Basic Features
+                </h3>
+
+                <p>
+                    Access the basic
+                    StudyHubSA learning system.
+                </p>
+
+                <br>
+
+                <span class="free-badge">
+                    FREE
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- PREMIUM FEATURES -->
+
+    <div class="card">
+
+        <h2>
+            ⭐ Premium Features
+        </h2>
+
+        <div class="resource-grid">
+
+            <div class="resource-card">
+
+                <h3>
+                    📄 Past Papers
+                </h3>
+
+                <p>
+                    Previous years' examination
+                    papers.
+                </p>
+
+                <br>
+
+                <span class="premium-badge">
+                    R10 EACH
+                </span>
+
+            </div>
+
+
+            <div class="resource-card">
+
+                <h3>
+                    📝 Memos
+                </h3>
+
+                <p>
+                    Answer memorandums for
+                    past papers.
+                </p>
+
+                <br>
+
+                <span class="premium-badge">
+                    R10 EACH
+                </span>
+
+            </div>
+
+
+            <div class="resource-card">
+
+                <h3>
+                    📚 Premium Resources
+                </h3>
+
+                <p>
+                    Additional premium study
+                    resources.
+                </p>
+
+                <br>
+
+                <span class="premium-badge">
+                    PREMIUM
+                </span>
+
+            </div>
+
+
+            <div class="resource-card">
+
+                <h3>
+                    ⭐ Exam Preparation
+                </h3>
+
+                <p>
+                    Advanced examination
+                    preparation resources.
+                </p>
+
+                <br>
+
+                <span class="premium-badge">
+                    PREMIUM
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
+
+<!-- =========================
+     SMART QUIZ
+========================= -->
+
+<section
+    id="quiz"
+    class="section">
+
+    <div class="card">
+
+        <h2>
+            🎯 Smart Quiz
+        </h2>
+
+        <p>
+            Choose your grade and subject
+            to start practising.
+        </p>
+
+        <br>
+
+        <select
+            id="gradeSelect">
+
+            <option value="">
+                Select Grade
+            </option>
+
+            <option value="8">
+                Grade 8
+            </option>
+
+            <option value="9">
+                Grade 9
+            </option>
+
+            <option value="10">
+                Grade 10
+            </option>
+
+            <option value="11">
+                Grade 11
+            </option>
+
+            <option value="12">
+                Grade 12
+            </option>
+
+        </select>
+
+        <br><br>
+
+        <select
+            id="subjectSelect">
+
+            <option value="">
+                Select Subject
+            </option>
+
+            <option>
+                Mathematics
+            </option>
+
+            <option>
+                English
+            </option>
+
+            <option>
+                Afrikaans
+            </option>
+
+            <option>
+                Physical Sciences
+            </option>
+
+            <option>
+                Life Sciences
+            </option>
+
+            <option>
+                History
+            </option>
+
+            <option>
+                Geography
+            </option>
+
+            <option>
+                Business Studies
+            </option>
+
+        </select>
+
+        <br><br>
+
+        <button
+            class="primary"
+            onclick="startQuiz()">
+
+            🔀 Generate New Quiz
+
+        </button>
+
+        <div
+            id="quizArea"
+            style="margin-top:20px;">
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     RESEARCH
+========================= -->
+
+<section
+    id="research"
+    class="section">
+
+    <div class="card">
+
+        <h2>
+            🔬 Research Centre
+        </h2>
+
+        <p>
+            Research anything you want.
+        </p>
+
+        <br>
+
+        <input
+            id="researchInput"
+            type="text"
+            placeholder="Search any topic...">
+
+        <br><br>
+
+        <button
+            class="primary"
+            onclick="researchTopic()">
+
+            🔎 Research
+
+        </button>
+
+        <div
+            id="researchResults"
+            style="margin-top:20px;">
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PREMIUM
+========================= -->
+
+<section
+    id="premium"
+    class="section">
+
+    <div class="card">
+
+        <h2>
+            ⭐ StudyHubSA Premium
+        </h2>
+
+        <div
+            id="premiumPageStatus"
+            class="status-box">
+
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>
+            📚 Premium Sections
+        </h2>
+
+        <div class="resource-grid">
+
+
+            <!-- PAST PAPERS -->
+
+            <div class="resource-card">
+
+                <h3>
+                    📄 Past Papers
+                </h3>
+
+                <p>
+                    Previous years' papers.
+                </p>
+
+                <br>
+
+                <strong>
+                    R10 per paper
+                </strong>
+
+                <br><br>
+
+                <button
+                    class="primary"
+                    onclick="accessPremium('Past Papers')">
+
+                    Access
+
+                </button>
+
+            </div>
+
+
+            <!-- MEMOS -->
+
+            <div class="resource-card">
+
+                <h3>
+                    📝 Memos
+                </h3>
+
+                <p>
+                    Answer memorandums.
+                </p>
+
+                <br>
+
+                <strong>
+                    R10 per memo
+                </strong>
+
+                <br><br>
+
+                <button
+                    class="primary"
+                    onclick="accessPremium('Memos')">
+
+                    Access
+
+                </button>
+
+            </div>
+
+
+            <!-- RESOURCES -->
+
+            <div class="resource-card">
+
+                <h3>
+                    📚 Premium Study Resources
+                </h3>
+
+                <p>
+                    Extra notes, worksheets
+                    and study resources.
+                </p>
+
+                <br>
+
+                <strong>
+                    Premium
+                </strong>
+
+                <br><br>
+
+                <button
+                    class="primary"
+                    onclick="accessPremium('Premium Study Resources')">
+
+                    Access
+
+                </button>
+
+            </div>
+
+
+            <!-- EXAM PREP -->
+
+            <div class="resource-card">
+
+                <h3>
+                    ⭐ Premium Exam Prep
+                </h3>
+
+                <p>
+                    Advanced exam preparation.
+                </p>
+
+                <br>
+
+                <strong>
+                    Premium
+                </strong>
+
+                <br><br>
+
+                <button
+                    class="primary"
+                    onclick="accessPremium('Premium Exam Prep')">
+
+                    Access
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PAST PAPERS
+========================= -->
+
+<section
+    id="papers"
+    class="section">
+
+    <div class="card">
+
+        <h2>
+            📄 Past Papers
+        </h2>
+
+        <p>
+            Past papers cost R10 each.
+        </p>
+
+        <br>
+
+        <button
+            class="primary"
+            onclick="accessPremium('Past Papers')">
+
+            View Past Papers
+
+        </button>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>
+            📝 Memos
+        </h2>
+
+        <p>
+            Memos cost R10 each.
+        </p>
+
+        <br>
+
+        <button
+            class="primary"
+            onclick="accessPremium('Memos')">
+
+            View Memos
+
+        </button>
+
+    </div>
+
+</section>
+
+
+</div>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
-<p>© 2026 StudyHubSA | Study Smarter. Achieve More. 🇿🇦</p>
+    <h3>
+        StudyHubSA
+    </h3>
 
-<p style="margin-top:10px;">
-Built for learners from Grade 8 to Grade 12.
-</p>
+    <p>
+        Learn • Practise • Research • Succeed
+    </p>
 
 </footer>
 
 
 <script>
 
-/* =========================
-   SUBJECTS
-========================= */
+/* =====================================
+   STUDYHUBSA 7 DAY SYSTEM
+===================================== */
 
-const subjects = {
+const REQUIRED_DAYS = 7;
 
-8: [
-["Mathematics","Numbers, Algebra, Geometry, Measurement and Data"],
-["English","Language, Comprehension, Writing and Literature"],
-["Natural Sciences","Matter, Energy, Cells, Forces and Ecosystems"],
-["Social Sciences","History, Geography and Map Skills"],
-["Economic & Management Sciences","Economics, Business and Financial Literacy"],
-["Technology","Design, Structures, Processing and Systems"],
-["Life Orientation","Personal development, health and social responsibility"],
-["Creative Arts","Visual Arts, Drama, Music and Dance"]
-],
+const FREE_PREMIUM_DAYS = 2;
 
-9: [
-["Mathematics","Algebra, Geometry, Statistics, Probability and Functions"],
-["English","Comprehension, Grammar, Writing and Literature"],
-["Natural Sciences","Chemistry, Physics, Life Sciences and Environment"],
-["Social Sciences","History, Geography, Development and Map Skills"],
-["Economic & Management Sciences","Entrepreneurship, Economy and Financial Literacy"],
-["Technology","Design, Structures, Processing and Mechanical Systems"],
-["Life Orientation","Health, careers, citizenship and personal development"],
-["Creative Arts","Art, Drama, Music and Dance"]
-],
 
-10: [
-["Mathematics","Algebra, Functions, Finance, Probability and Euclidean Geometry"],
-["Physical Sciences","Mechanics, Matter, Waves, Chemistry and Electricity"],
-["Life Sciences","Cells, Biomolecules, Genetics and Biodiversity"],
-["Geography","Climate, Geomorphology, Development and Map Work"],
-["History","Colonisation, Industrialisation and Historical Skills"],
-["Accounting","Financial Accounting and Accounting Concepts"],
-["Business Studies","Business Environments and Entrepreneurship"],
-["English","Language, Literature, Writing and Comprehension"],
-["Life Orientation","Development, citizenship, careers and health"]
-],
-
-11: [
-["Mathematics","Functions, Trigonometry, Analytical Geometry, Statistics and Probability"],
-["Physical Sciences","Mechanics, Waves, Electricity, Chemistry and Organic Chemistry"],
-["Life Sciences","DNA, Genetics, Evolution, Human Biology and Ecology"],
-["Geography","Geomorphology, Climate, Development and GIS"],
-["History","Nationalism, Colonialism and Historical Analysis"],
-["Accounting","Financial Statements and Accounting Concepts"],
-["Business Studies","Business Operations, Management and Entrepreneurship"],
-["English","Language, Literature and Advanced Writing"],
-["Life Orientation","Citizenship, careers, health and personal development"]
-],
-
-12: [
-["Mathematics","Functions, Calculus, Probability, Statistics, Trigonometry and Finance"],
-["Mathematical Literacy","Finance, Measurement, Data Handling, Probability and Maps"],
-["Physical Sciences","Mechanics, Electricity, Waves, Chemistry and Organic Chemistry"],
-["Life Sciences","Genetics, Evolution, Human Biology and Ecology"],
-["Geography","Climate, Geomorphology, Development and GIS"],
-["History","Source-Based Questions, Essays and Historical Interpretation"],
-["Accounting","Financial Reporting, Analysis and Cost Accounting"],
-["Business Studies","Business Environments, Operations and Entrepreneurship"],
-["English","Comprehension, Literature, Language and Writing"],
-["Life Orientation","Citizenship, careers, health and personal development"]
-]
-
-};
-
-
-/* =========================
-   SHOW SUBJECTS
-========================= */
-
-function showGrade(grade) {
-
-    const container = document.getElementById("subjects");
-
-    container.innerHTML = `
-        <div class="section-title">
-            <h2>Grade ${grade} Subjects</h2>
-            <p>Select a subject to begin studying.</p>
-        </div>
-
-        <div class="subject-grid">
-            ${subjects[grade].map(subject => `
-                <div class="subject-card">
-                    <h3>${subject[0]}</h3>
-                    <p>${subject[1]}</p>
-                    <button
-                    class="button"
-                    onclick="selectQuizSubject('${subject[0]}')">
-                    Practise Quiz
-                    </button>
-                </div>
-            `).join("")}
-        </div>
-    `;
-
-    document.getElementById("subjects")
-    .scrollIntoView({behavior:"smooth"});
-}
-
-
-/* =========================
-   QUIZ QUESTION BANK
-========================= */
-
-const quizBank = {
-
-Mathematics: [
-
-{
-q:"What is 15 × 4?",
-options:["45","50","60","75"],
-answer:"60"
-},
-
-{
-q:"Solve: 2x + 6 = 14",
-options:["2","3","4","5"],
-answer:"4"
-},
-
-{
-q:"What is the square root of 144?",
-options:["10","11","12","14"],
-answer:"12"
-},
-
-{
-q:"What is 25% of 200?",
-options:["25","40","50","75"],
-answer:"50"
-},
-
-{
-q:"If y = 2x + 3 and x = 4, what is y?",
-options:["7","9","10","11"],
-answer:"11"
-}
-
-],
-
-Science: [
-
-{
-q:"Which organelle is known as the powerhouse of the cell?",
-options:["Nucleus","Mitochondria","Ribosome","Cell wall"],
-answer:"Mitochondria"
-},
-
-{
-q:"What force pulls objects towards Earth?",
-options:["Friction","Magnetism","Gravity","Pressure"],
-answer:"Gravity"
-},
-
-{
-q:"What gas do plants mainly use during photosynthesis?",
-options:["Oxygen","Nitrogen","Carbon dioxide","Hydrogen"],
-answer:"Carbon dioxide"
-},
-
-{
-q:"What is the chemical formula for water?",
-options:["CO2","H2O","O2","NaCl"],
-answer:"H2O"
-},
-
-{
-q:"Which particle has a negative charge?",
-options:["Proton","Neutron","Electron","Nucleus"],
-answer:"Electron"
-}
-
-],
-
-English: [
-
-{
-q:"Which word is a noun?",
-options:["Quickly","Beautiful","School","Run"],
-answer:"School"
-},
-
-{
-q:"Choose the correct plural of 'child'.",
-options:["Childs","Childes","Children","Childrens"],
-answer:"Children"
-},
-
-{
-q:"What is a synonym for 'happy'?",
-options:["Sad","Joyful","Angry","Tired"],
-answer:"Joyful"
-},
-
-{
-q:"Which sentence is written correctly?",
-options:[
-"She go to school.",
-"She goes to school.",
-"She going school.",
-"She gone school."
-],
-answer:"She goes to school."
-},
-
-{
-q:"What is the opposite of 'ancient'?",
-options:["Old","Historic","Modern","Past"],
-answer:"Modern"
-}
-
-],
-
-Geography: [
-
-{
-q:"Which instrument measures temperature?",
-options:["Barometer","Thermometer","Rain gauge","Anemometer"],
-answer:"Thermometer"
-},
-
-{
-q:"What is the imaginary line at 0° latitude called?",
-options:["Prime Meridian","Equator","Tropic of Capricorn","Arctic Circle"],
-answer:"Equator"
-},
-
-{
-q:"Which layer of Earth is directly beneath the crust?",
-options:["Inner core","Outer core","Mantle","Atmosphere"],
-answer:"Mantle"
-},
-
-{
-q:"What does GIS stand for?",
-options:[
-"Global Information System",
-"Geographic Information System",
-"Geological Internet System",
-"Global Internet Service"
-],
-answer:"Geographic Information System"
-},
-
-{
-q:"Which process describes water changing from liquid to gas?",
-options:["Condensation","Freezing","Evaporation","Precipitation"],
-answer:"Evaporation"
-}
-
-]
-
-};
-
-
-/* =========================
-   QUIZ SYSTEM
-========================= */
-
-let currentQuiz = [];
-let currentQuestion = 0;
-let score = 0;
-
-function selectQuizSubject(subject) {
-
-    const select = document.getElementById("quizSubject");
-
-    const optionExists =
-        [...select.options].some(
-            option => option.value === subject
-        );
-
-    if(optionExists) {
-        select.value = subject;
-    } else {
-
-        if(subject === "Natural Sciences" ||
-           subject === "Physical Sciences") {
-
-            select.value = "Science";
-
-        } else {
-
-            select.value = "English";
-
-        }
-    }
-
-    document.getElementById("quiz")
-    .scrollIntoView({behavior:"smooth"});
-
-    generateQuiz();
-}
-
-
-function shuffle(array) {
-
-    return array.sort(() => Math.random() - 0.5);
-
-}
-
-
-function generateQuiz() {
-
-    const subject =
-        document.getElementById("quizSubject").value;
-
-    currentQuiz =
-        shuffle([...quizBank[subject]]).slice(0,5);
-
-    currentQuestion = 0;
-    score = 0;
-
-    showQuestion();
-
-}
-
-
-function showQuestion() {
-
-    if(currentQuestion >= currentQuiz.length) {
-
-        document.getElementById("quizArea").innerHTML = `
-
-            <div class="result">
-
-                <h2>🎉 Quiz Complete!</h2>
-
-                <p>
-                Your score:
-                <strong>
-                ${score}/${currentQuiz.length}
-                </strong>
-                </p>
-
-                <button class="button"
-                onclick="generateQuiz()">
-                Try Another Quiz 🔀
-                </button>
-
-            </div>
-        `;
-
-        return;
-    }
-
-    const question =
-        currentQuiz[currentQuestion];
-
-    document.getElementById("quizArea").innerHTML = `
-
-        <div class="question">
-
-            <h3>
-            Question ${currentQuestion + 1}:
-            ${question.q}
-            </h3>
-
-            ${shuffle([...question.options])
-            .map(option => `
-                <div
-                class="option"
-                onclick="checkAnswer('${option.replace(/'/g,"\\'")}')">
-                ${option}
-                </div>
-            `).join("")}
-
-        </div>
-    `;
-}
-
-
-function checkAnswer(selected) {
-
-    const correct =
-        currentQuiz[currentQuestion].answer;
-
-    if(selected === correct) {
-
-        score++;
-
-        alert("✅ Correct!");
-
-    } else {
-
-        alert(
-        "❌ Not quite.\n\n" +
-        "Correct answer: " + correct
-        );
-
-    }
-
-    currentQuestion++;
-
-    showQuestion();
-}
-
-
-/* =========================
-   7 DAY STREAK SYSTEM
-========================= */
+/* =====================================
+   GET TODAY
+===================================== */
 
 function getToday() {
 
-    return new Date()
-    .toISOString()
-    .split("T")[0];
+    const date =
+        new Date();
+
+    return date
+        .toISOString()
+        .split("T")[0];
 
 }
 
 
-function updateStudyStreak() {
+/* =====================================
+   GET SAVED STUDY DAYS
+===================================== */
 
-    const today = getToday();
+function getStudyDays() {
 
-    let data =
-        JSON.parse(
-            localStorage.getItem("studyHubData")
-        ) || {
-            streak:0,
-            lastStudy:null,
-            badge:false,
-            researchUntil:null
-        };
+    const saved =
+        localStorage.getItem(
+            "studyhubsaStudyDays"
+        );
+
+    if (!saved) {
+
+        return [];
+
+    }
+
+    try {
+
+        return JSON.parse(saved);
+
+    } catch {
+
+        return [];
+
+    }
+
+}
 
 
-    if(data.lastStudy !== today) {
+/* =====================================
+   REGISTER DAILY USE
+===================================== */
 
-        if(data.lastStudy) {
+function registerDailyUse() {
 
-            const previous =
-                new Date(data.lastStudy);
+    let days =
+        getStudyDays();
 
-            const current =
-                new Date(today);
+    const today =
+        getToday();
 
-            const difference =
-                Math.round(
-                    (current - previous) /
-                    (1000*60*60*24)
-                );
 
-            if(difference === 1) {
+    /*
+       Only count a day once.
+    */
 
-                data.streak++;
+    if (!days.includes(today)) {
 
-            } else {
-
-                data.streak = 1;
-
-            }
-
-        } else {
-
-            data.streak = 1;
-
-        }
-
-        data.lastStudy = today;
-
-        if(data.streak >= 7 && !data.badge) {
-
-            data.badge = true;
-
-            data.researchUntil =
-                Date.now() +
-                (48 * 60 * 60 * 1000);
-
-            alert(
-            "🏆 Congratulations!\n\n" +
-            "You completed 7 days of studying!\n\n" +
-            "Your StudyHubSA Badge has been unlocked."
-            );
-
-        }
+        days.push(today);
 
         localStorage.setItem(
-            "studyHubData",
-            JSON.stringify(data)
+            "studyhubsaStudyDays",
+            JSON.stringify(days)
         );
 
     }
 
-    displayBadge(data);
+
+    updatePremiumStatus();
 
 }
 
 
-function displayBadge(data) {
+/* =====================================
+   PREMIUM START DATE
+===================================== */
 
-    const badge =
-        document.getElementById("badgeDisplay");
+function getPremiumStart() {
 
-    const streak =
-        document.getElementById("streakText");
-
-    if(data.badge) {
-
-        badge.classList.remove("locked");
-
-        badge.innerHTML = `
-            <strong>🏆</strong>
-            <span>7 Day Badge</span>
-        `;
-
-        streak.innerHTML =
-        "🔥 Study streak: " +
-        data.streak +
-        " days — Badge unlocked!";
-
-    } else {
-
-        badge.classList.add("locked");
-
-        badge.innerHTML = `
-            <strong>🔒</strong>
-            <span>7 Day Badge</span>
-        `;
-
-        streak.innerHTML =
-        "🔥 Study streak: " +
-        data.streak +
-        " / 7 days";
-    }
-
-    updateResearchStatus(data);
-
-}
-
-
-/* =========================
-   RESEARCH MODE
-========================= */
-
-function updateResearchStatus(data) {
-
-    const status =
-        document.getElementById("researchStatus");
-
-    if(
-        data.researchUntil &&
-        Date.now() < data.researchUntil
-    ) {
-
-        const hours =
-            Math.ceil(
-                (data.researchUntil -
-                Date.now()) /
-                (1000*60*60)
-            );
-
-        status.innerHTML =
-        "🔓 Research Mode unlocked! " +
-        hours +
-        " hour(s) remaining.";
-
-    } else {
-
-        status.innerHTML =
-        "🔒 Research Mode is locked. " +
-        "Complete your 7-day study streak to unlock it.";
-
-    }
-
-}
-
-
-function research() {
-
-    const data =
-        JSON.parse(
-            localStorage.getItem("studyHubData")
-        ) || {};
-
-    if(
-        !data.researchUntil ||
-        Date.now() >= data.researchUntil
-    ) {
-
-        alert(
-        "🔒 Research Mode is locked.\n\n" +
-        "Study for 7 days to earn your badge."
-        );
-
-        return;
-
-    }
-
-
-    const query =
-        document.getElementById(
-            "researchInput"
-        ).value.trim();
-
-
-    if(!query) {
-
-        alert("Please enter something to research.");
-
-        return;
-
-    }
-
-
-    window.open(
-        "https://www.google.com/search?q=" +
-        encodeURIComponent(
-            query + " educational"
-        ),
-        "_blank"
+    return localStorage.getItem(
+        "studyhubsaPremiumStart"
     );
 
 }
 
 
-/* =========================
-   START SYSTEM
-========================= */
+/* =====================================
+   START FREE PASS
+===================================== */
 
-updateStudyStreak();
+function startFreePass() {
+
+    if (
+        getStudyDays().length >=
+        REQUIRED_DAYS
+    ) {
+
+        if (!getPremiumStart()) {
+
+            localStorage.setItem(
+                "studyhubsaPremiumStart",
+                getToday()
+            );
+
+        }
+
+    }
+
+}
+
+
+/* =====================================
+   CHECK FREE PREMIUM
+===================================== */
+
+function isPremiumFree() {
+
+    const start =
+        getPremiumStart();
+
+
+    if (!start) {
+
+        return false;
+
+    }
+
+
+    const startDate =
+        new Date(
+            start + "T00:00:00"
+        );
+
+
+    const today =
+        new Date(
+            getToday() + "T00:00:00"
+        );
+
+
+    const daysPassed =
+        Math.floor(
+            (
+                today -
+                startDate
+            ) /
+            (
+                1000 *
+                60 *
+                60 *
+                24
+            )
+        );
+
+
+    return (
+        daysPassed <
+        FREE_PREMIUM_DAYS
+    );
+
+}
+
+
+/* =====================================
+   PREMIUM DAYS LEFT
+===================================== */
+
+function premiumDaysLeft() {
+
+    const start =
+        getPremiumStart();
+
+
+    if (!start) {
+
+        return 0;
+
+    }
+
+
+    const startDate =
+        new Date(
+            start + "T00:00:00"
+        );
+
+
+    const today =
+        new Date(
+            getToday() + "T00:00:00"
+        );
+
+
+    const daysPassed =
+        Math.floor(
+            (
+                today -
+                startDate
+            ) /
+            (
+                1000 *
+                60 *
+                60 *
+                24
+            )
+        );
+
+
+    return Math.max(
+        0,
+        FREE_PREMIUM_DAYS -
+        daysPassed
+    );
+
+}
+
+
+/* =====================================
+   UPDATE STATUS
+===================================== */
+
+function updatePremiumStatus() {
+
+    const days =
+        getStudyDays().length;
+
+
+    const status =
+        document.getElementById(
+            "premiumStatus"
+        );
+
+
+    const pageStatus =
+        document.getElementById(
+            "premiumPageStatus"
+        );
+
+
+    const progress =
+        document.getElementById(
+            "studyProgress"
+        );
+
+
+    /*
+       FREE PREMIUM ACTIVE
+    */
+
+    if (isPremiumFree()) {
+
+        const remaining =
+            premiumDaysLeft();
+
+
+        const message = `
+
+            🎉 <strong>
+            YOUR FREE PREMIUM PASS IS ACTIVE!
+            </strong>
+
+            <br><br>
+
+            You have
+            <strong>
+            ${remaining}
+            </strong>
+            day(s) of free Premium access remaining.
+
+            <br><br>
+
+            You can access:
+
+            <br>
+
+            📄 Past Papers<br>
+            📝 Memos<br>
+            📚 Premium Study Resources<br>
+            ⭐ Premium Exam Prep
+
+        `;
+
+
+        if (status) {
+
+            status.innerHTML =
+                message;
+
+        }
+
+
+        if (pageStatus) {
+
+            pageStatus.innerHTML =
+                message;
+
+        }
+
+
+        if (progress) {
+
+            progress.value =
+                REQUIRED_DAYS;
+
+        }
+
+
+        return;
+
+    }
+
+
+    /*
+       SEVEN DAYS COMPLETED
+    */
+
+    if (
+        days >=
+        REQUIRED_DAYS
+    ) {
+
+        startFreePass();
+
+        updatePremiumStatus();
+
+        return;
+
+    }
+
+
+    /*
+       STILL WORKING TOWARDS
+       FREE PREMIUM
+    */
+
+    const remaining =
+        REQUIRED_DAYS -
+        days;
+
+
+    const message = `
+
+        📚 You have used
+        <strong>
+        StudyHubSA for ${days}
+        different day(s).
+        </strong>
+
+        <br><br>
+
+        Use StudyHubSA for
+        <strong>
+        ${remaining}
+        more day(s)
+        </strong>
+
+        to unlock your
+
+        <strong>
+        2-DAY FREE PREMIUM PASS!
+        </strong>
+
+    `;
+
+
+    if (status) {
+
+        status.innerHTML =
+            message;
+
+    }
+
+
+    if (pageStatus) {
+
+        pageStatus.innerHTML =
+            message;
+
+    }
+
+
+    if (progress) {
+
+        progress.value =
+            days;
+
+    }
+
+}
+
+
+/* =====================================
+   ACCESS PREMIUM
+===================================== */
+
+function accessPremium(sectionName) {
+
+    /*
+       FREE PASS
+    */
+
+    if (isPremiumFree()) {
+
+        alert(
+
+            "🎉 FREE PREMIUM ACCESS!\n\n" +
+
+            sectionName +
+
+            " is available to you for free " +
+
+            "during your 2-day Premium Pass."
+
+        );
+
+        return;
+
+    }
+
+
+    /*
+       PREMIUM LOCKED
+    */
+
+    alert(
+
+        "🔒 Premium Section\n\n" +
+
+        sectionName +
+
+        " is currently locked.\n\n" +
+
+        "You can unlock your 2-day FREE Premium Pass " +
+
+        "after using StudyHubSA for 7 different days.\n\n" +
+
+        "Past Papers and Memos cost R10 each."
+
+    );
+
+}
+
+
+/* =====================================
+   RESEARCH
+===================================== */
+
+function researchTopic() {
+
+    const input =
+        document.getElementById(
+            "researchInput"
+        );
+
+
+    const topic =
+        input.value.trim();
+
+
+    const results =
+        document.getElementById(
+            "researchResults"
+        );
+
+
+    if (!topic) {
+
+        alert(
+            "Please enter something to research."
+        );
+
+        return;
+
+    }
+
+
+    const searchURL =
+        "https://www.google.com/search?q=" +
+
+        encodeURIComponent(topic);
+
+
+    results.innerHTML = `
+
+        <div class="status-box">
+
+            <h3>
+                🔎 Research:
+                ${escapeHTML(topic)}
+            </h3>
+
+            <br>
+
+            <p>
+                Click below to research this topic.
+            </p>
+
+            <br>
+
+            <a
+                href="${searchURL}"
+                target="_blank"
+                rel="noopener">
+
+                <button class="primary">
+
+                    🔎 Search the Web
+
+                </button>
+
+            </a>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =====================================
+   ESCAPE HTML
+===================================== */
+
+function escapeHTML(text) {
+
+    const div =
+        document.createElement("div");
+
+    div.textContent =
+        text;
+
+    return div.innerHTML;
+
+}
+
+
+/* =====================================
+   SIMPLE SMART QUIZ
+===================================== */
+
+function startQuiz() {
+
+    const grade =
+        document.getElementById(
+            "gradeSelect"
+        ).value;
+
+
+    const subject =
+        document.getElementById(
+            "subjectSelect"
+        ).value;
+
+
+    if (!grade || !subject) {
+
+        alert(
+            "Please select a grade and subject."
+        );
+
+        return;
+
+    }
+
+
+    const questions = [
+
+        `What is an important concept to understand in ${subject} at Grade ${grade}?`,
+
+        `Which skill is useful when studying ${subject}?`,
+
+        `Which approach would help you solve a difficult ${subject} problem?`,
+
+        `Why is understanding ${subject} important?`,
+
+        `Which statement best demonstrates critical thinking in ${subject}?`
+
+    ];
+
+
+    const shuffled =
+        questions.sort(
+            () => Math.random() - 0.5
+        );
+
+
+    const quizArea =
+        document.getElementById(
+            "quizArea"
+        );
+
+
+    quizArea.innerHTML = `
+
+        <div class="status-box">
+
+            <h3>
+                Grade ${grade}
+                ${subject} Quiz
+            </h3>
+
+            <p>
+                A new quiz has been generated.
+            </p>
+
+            <br>
+
+            ${shuffled.map(
+                (question, index) => `
+
+                    <p>
+                        <strong>
+                        ${index + 1}.
+                        </strong>
+                        ${question}
+                    </p>
+
+                    <br>
+
+                `
+            ).join("")}
+
+            <p>
+                🎯 Your full adaptive
+                question bank can be expanded
+                with subject-specific questions
+                for every grade.
+            </p>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =====================================
+   NAVIGATION
+===================================== */
+
+function showSection(sectionID) {
+
+    document
+        .querySelectorAll(".section")
+        .forEach(
+            section => {
+
+                section.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+
+    const section =
+        document.getElementById(
+            sectionID
+        );
+
+
+    if (section) {
+
+        section.classList.add(
+            "active"
+        );
+
+    }
+
+
+    updatePremiumStatus();
+
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+}
+
+
+/* =====================================
+   START SYSTEM
+===================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        registerDailyUse();
+
+    }
+);
 
 </script>
 
