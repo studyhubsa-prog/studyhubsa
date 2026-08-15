@@ -4,9 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>StudyHubSA | South Africa's Smart Study Platform</title>
+  <title>StudyHubSA | Smart Study Platform</title>
 
-  <meta name="description" content="StudyHubSA is South Africa's smart study platform for Grades 4–12. Research smarter, study better and ace your exams.">
+  <meta name="description"
+    content="StudyHubSA is South Africa's smart study platform for Grades 4–12. Research smarter. Study better. Ace your exams.">
 
   <style>
     * {
@@ -53,7 +54,7 @@
     }
 
     .hero {
-      min-height: 75vh;
+      min-height: 70vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -69,13 +70,12 @@
     .hero h1 {
       font-size: 52px;
       color: #4f46e5;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
 
     .hero h2 {
-      font-size: 25px;
+      font-size: 24px;
       margin-bottom: 15px;
-      color: #333;
     }
 
     .hero p {
@@ -85,19 +85,17 @@
       margin: auto;
     }
 
-    .buttons {
-      margin-top: 30px;
-    }
-
     .btn {
       display: inline-block;
       padding: 14px 28px;
-      margin: 8px;
+      margin-top: 25px;
       border-radius: 10px;
       text-decoration: none;
       font-weight: bold;
       background: #4f46e5;
       color: white;
+      border: none;
+      cursor: pointer;
       transition: 0.3s;
     }
 
@@ -106,13 +104,8 @@
       opacity: 0.9;
     }
 
-    .btn-light {
-      background: #ede9fe;
-      color: #4f46e5;
-    }
-
     .section {
-      padding: 70px 7%;
+      padding: 65px 7%;
       text-align: center;
     }
 
@@ -121,13 +114,45 @@
       margin-bottom: 15px;
     }
 
-    .section-intro {
+    .intro {
       max-width: 700px;
-      margin: 0 auto 40px;
+      margin: 0 auto 35px;
       color: #666;
     }
 
-    .cards {
+    /* GRADES */
+
+    .grades {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 15px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .grade {
+      background: white;
+      padding: 20px;
+      border-radius: 14px;
+      box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .grade:hover {
+      background: #4f46e5;
+      color: white;
+      transform: translateY(-5px);
+    }
+
+    /* RESOURCES */
+
+    .resources {
+      background: #eef2ff;
+    }
+
+    .resource-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 25px;
@@ -135,51 +160,71 @@
       margin: auto;
     }
 
-    .card {
+    .resource-card {
       background: white;
-      padding: 30px 22px;
+      padding: 30px 20px;
       border-radius: 18px;
-      box-shadow: 0 6px 25px rgba(0,0,0,0.08);
+      box-shadow: 0 6px 22px rgba(0,0,0,0.08);
       transition: 0.3s;
     }
 
-    .card:hover {
+    .resource-card:hover {
       transform: translateY(-7px);
     }
 
-    .card .icon {
+    .resource-icon {
       font-size: 42px;
-      margin-bottom: 15px;
+      margin-bottom: 12px;
     }
 
-    .card h3 {
+    .resource-card h3 {
       color: #4f46e5;
       margin-bottom: 10px;
     }
 
-    .card p {
+    .resource-card p {
       color: #666;
     }
 
-    .features {
-      background: #eef2ff;
+    .resource-card a {
+      display: inline-block;
+      margin-top: 15px;
+      color: #4f46e5;
+      font-weight: bold;
+      text-decoration: none;
     }
 
-    .feature-box {
-      max-width: 1000px;
+    /* SEARCH */
+
+    .search-box {
+      max-width: 650px;
+      margin: 25px auto;
+      display: flex;
+      gap: 10px;
+    }
+
+    .search-box input {
+      flex: 1;
+      padding: 15px;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .search-box input:focus {
+      border-color: #4f46e5;
+    }
+
+    /* ABOUT */
+
+    .about {
+      max-width: 750px;
       margin: auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 25px;
+      color: #666;
     }
 
-    .feature {
-      padding: 25px;
-    }
-
-    .feature h3 {
-      margin: 10px 0;
-    }
+    /* CTA */
 
     .cta {
       text-align: center;
@@ -190,11 +235,6 @@
 
     .cta h2 {
       font-size: 38px;
-      margin-bottom: 15px;
-    }
-
-    .cta p {
-      margin-bottom: 15px;
     }
 
     .cta .btn {
@@ -215,6 +255,7 @@
     }
 
     @media (max-width: 700px) {
+
       header {
         justify-content: center;
         gap: 15px;
@@ -223,6 +264,7 @@
       nav {
         width: 100%;
         justify-content: center;
+        flex-wrap: wrap;
       }
 
       .hero h1 {
@@ -233,8 +275,8 @@
         font-size: 21px;
       }
 
-      .hero p {
-        font-size: 17px;
+      .search-box {
+        flex-direction: column;
       }
     }
   </style>
@@ -243,183 +285,280 @@
 <body>
 
   <!-- HEADER -->
+
   <header>
-    <div class="logo">📚 StudyHubSA 🇿🇦</div>
+
+    <div class="logo">
+      📚 StudyHubSA 🇿🇦
+    </div>
 
     <nav>
       <a href="#home">Home</a>
-      <a href="#subjects">Subjects</a>
-      <a href="#features">Features</a>
+      <a href="#grades">Grades</a>
+      <a href="#resources">Resources</a>
       <a href="#about">About</a>
     </nav>
+
   </header>
 
 
   <!-- HERO -->
+
   <section class="hero" id="home">
+
     <div class="hero-content">
 
       <h1>StudyHubSA</h1>
 
-      <h2>South Africa's Smart Study Platform for Grades 4–12</h2>
+      <h2>
+        South Africa's Smart Study Platform for Grades 4–12
+      </h2>
 
       <p>
         Research smarter. Study better. Ace your exams.
-        StudyHubSA brings useful study resources and learning
-        support together in one simple platform.
+        Find study resources, revision material and learning
+        support all in one place.
       </p>
 
-      <div class="buttons">
-        <a href="#subjects" class="btn">🚀 Start Studying</a>
-        <a href="#about" class="btn btn-light">Learn More</a>
-      </div>
+      <a href="#grades" class="btn">
+        🚀 Find My Resources
+      </a>
 
     </div>
+
   </section>
 
 
-  <!-- SUBJECTS -->
-  <section class="section" id="subjects">
+  <!-- GRADES -->
 
-    <h2>📚 Explore Subjects</h2>
+  <section class="section" id="grades">
 
-    <p class="section-intro">
-      Find helpful resources and study support across
-      different school subjects.
+    <h2>🎓 Choose Your Grade</h2>
+
+    <p class="intro">
+      Select your grade to find resources designed for your level.
     </p>
 
-    <div class="cards">
+    <div class="grades">
 
-      <div class="card">
-        <div class="icon">➗</div>
-        <h3>Mathematics</h3>
-        <p>
-          Build your maths skills and prepare for tests and exams.
-        </p>
+      <div class="grade" onclick="selectGrade('Grade 4')">
+        Grade 4
       </div>
 
-      <div class="card">
-        <div class="icon">🔬</div>
-        <h3>Physical Sciences</h3>
-        <p>
-          Understand important science concepts and revise smarter.
-        </p>
+      <div class="grade" onclick="selectGrade('Grade 5')">
+        Grade 5
       </div>
 
-      <div class="card">
-        <div class="icon">🧬</div>
-        <h3>Life Sciences</h3>
-        <p>
-          Explore biology topics and make revision easier.
-        </p>
+      <div class="grade" onclick="selectGrade('Grade 6')">
+        Grade 6
       </div>
 
-      <div class="card">
-        <div class="icon">📖</div>
-        <h3>English</h3>
-        <p>
-          Improve your reading, writing and comprehension skills.
-        </p>
+      <div class="grade" onclick="selectGrade('Grade 7')">
+        Grade 7
       </div>
 
-      <div class="card">
-        <div class="icon">🌍</div>
-        <h3>Geography</h3>
-        <p>
-          Study geography concepts and prepare for assessments.
-        </p>
+      <div class="grade" onclick="selectGrade('Grade 8')">
+        Grade 8
       </div>
 
-      <div class="card">
-        <div class="icon">💼</div>
-        <h3>Business Studies</h3>
-        <p>
-          Learn business concepts and prepare for your exams.
-        </p>
+      <div class="grade" onclick="selectGrade('Grade 9')">
+        Grade 9
+      </div>
+
+      <div class="grade" onclick="selectGrade('Grade 10')">
+        Grade 10
+      </div>
+
+      <div class="grade" onclick="selectGrade('Grade 11')">
+        Grade 11
+      </div>
+
+      <div class="grade" onclick="selectGrade('Grade 12')">
+        Grade 12
       </div>
 
     </div>
+
+    <p id="selectedGrade"
+       style="margin-top:25px;font-weight:bold;color:#4f46e5;">
+    </p>
+
   </section>
 
 
-  <!-- FEATURES -->
-  <section class="section features" id="features">
+  <!-- RESOURCES -->
 
-    <h2>✨ Why StudyHubSA?</h2>
+  <section class="section resources" id="resources">
 
-    <p class="section-intro">
-      Everything you need to make studying simpler and more effective.
+    <h2>📚 Study Resources</h2>
+
+    <p class="intro">
+      Explore different types of resources to help you
+      understand, revise and prepare.
     </p>
 
-    <div class="feature-box">
+    <div class="resource-grid">
 
-      <div class="feature">
-        <div class="icon">🔎</div>
-        <h3>Research Smarter</h3>
+      <div class="resource-card">
+
+        <div class="resource-icon">📝</div>
+
+        <h3>Study Notes</h3>
+
         <p>
-          Find useful information and learning resources in one place.
+          Easy-to-understand notes to help you learn important topics.
         </p>
+
+        <a href="#">Explore Notes →</a>
+
       </div>
 
-      <div class="feature">
-        <div class="icon">📝</div>
-        <h3>Revise Better</h3>
+
+      <div class="resource-card">
+
+        <div class="resource-icon">📄</div>
+
+        <h3>Past Papers</h3>
+
         <p>
-          Use organised study material to make revision easier.
+          Prepare for exams using legally available past papers
+          and practice material.
         </p>
+
+        <a href="#">View Past Papers →</a>
+
       </div>
 
-      <div class="feature">
-        <div class="icon">🎯</div>
-        <h3>Reach Your Goals</h3>
+
+      <div class="resource-card">
+
+        <div class="resource-icon">✅</div>
+
+        <h3>Revision Guides</h3>
+
         <p>
-          Stay focused and work towards achieving better marks.
+          Quick revision guides to help you focus on important
+          concepts before assessments.
         </p>
+
+        <a href="#">Start Revising →</a>
+
       </div>
 
-      <div class="feature">
-        <div class="icon">🇿🇦</div>
-        <h3>Made for South African Students</h3>
+
+      <div class="resource-card">
+
+        <div class="resource-icon">🎯</div>
+
+        <h3>Exam Preparation</h3>
+
         <p>
-          A platform designed with South African learners in mind.
+          Study tips and preparation strategies to help you
+          approach exams with confidence.
         </p>
+
+        <a href="#">Prepare Now →</a>
+
+      </div>
+
+
+      <div class="resource-card">
+
+        <div class="resource-icon">📖</div>
+
+        <h3>Learning Guides</h3>
+
+        <p>
+          Helpful educational material organised to make learning easier.
+        </p>
+
+        <a href="#">Learn More →</a>
+
+      </div>
+
+
+      <div class="resource-card">
+
+        <div class="resource-icon">🤖</div>
+
+        <h3>AI Study Helper</h3>
+
+        <p>
+          An upcoming feature designed to help learners understand
+          difficult topics.
+        </p>
+
+        <a href="#">Coming Soon →</a>
+
       </div>
 
     </div>
+
+  </section>
+
+
+  <!-- SEARCH -->
+
+  <section class="section">
+
+    <h2>🔎 Find a Resource</h2>
+
+    <p class="intro">
+      Search for a subject, topic or resource.
+    </p>
+
+    <div class="search-box">
+
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Example: Grade 12 Mathematics..."
+        onkeyup="searchResources()"
+      >
+
+    </div>
+
+    <p id="searchMessage"></p>
+
   </section>
 
 
   <!-- ABOUT -->
+
   <section class="section" id="about">
 
-    <h2>🎓 About StudyHubSA</h2>
+    <h2>🇿🇦 About StudyHubSA</h2>
 
-    <p class="section-intro">
+    <p class="about">
       StudyHubSA is a student-focused platform created to help
-      learners from Grades 4–12 access useful educational resources,
-      improve their study habits and prepare for exams.
+      South African learners from Grades 4–12 research smarter,
+      study better and prepare for exams.
+      Our goal is to bring useful educational resources together
+      in one simple and accessible platform.
     </p>
 
   </section>
 
 
   <!-- CTA -->
+
   <section class="cta">
 
     <h2>Ready to Study Smarter?</h2>
 
     <p>
-      Start your journey today and take your learning to the next level.
+      Choose your grade and start exploring StudyHubSA.
     </p>
 
-    <a href="#subjects" class="btn">
-      Explore StudyHubSA 🚀
+    <a href="#grades" class="btn">
+      Start Studying 🚀
     </a>
 
   </section>
 
 
   <!-- FOOTER -->
+
   <footer>
 
     <p>📚 StudyHubSA 🇿🇦</p>
@@ -428,9 +567,50 @@
       South Africa's smart study platform for Grades 4–12.
     </p>
 
-    <p>© 2026 StudyHubSA. All rights reserved.</p>
+    <p>
+      © 2026 StudyHubSA. All rights reserved.
+    </p>
 
   </footer>
+
+
+  <!-- JAVASCRIPT -->
+
+  <script>
+
+    function selectGrade(grade) {
+
+      document.getElementById("selectedGrade").innerText =
+        "You selected " + grade + " 🎓 — resources coming next!";
+
+      document.getElementById("resources").scrollIntoView({
+        behavior: "smooth"
+      });
+
+    }
+
+
+    function searchResources() {
+
+      const input =
+        document.getElementById("searchInput").value.toLowerCase();
+
+      const message =
+        document.getElementById("searchMessage");
+
+      if (input.length === 0) {
+
+        message.innerText = "";
+
+        return;
+      }
+
+      message.innerText =
+        "🔎 Searching StudyHubSA for: " + input;
+
+    }
+
+  </script>
 
 </body>
 </html>
